@@ -1,0 +1,21 @@
+.login-container {
+  margin: 1% 2%;
+}
+
+.register-button {
+  background-color: olivedrab;
+  color: white;
+  margin-right: 30px;
+  border-color: olivedrab;
+}
+
+.signin-button {
+  background-color: blue;
+  color: white;
+}
+
+.buttons {
+  /* padding: 5%; */
+  display: flex;
+  margin-right: 5%;
+}

@@ -1,11 +1,13 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { Login } from '../pages';
+import { Login, Home, Register } from '../pages';
 
 function index() {
   return (
     <Switch>
-      <Route path='/' component={ Login } />
+      <Route exact path='/' component={ Login } />
+      <Route exact path='/home' component={ Home } />
+      <Route exact path='/register' component={ Register } />
     </Switch>
   );
 }
