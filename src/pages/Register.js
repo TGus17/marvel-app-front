@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
+import Forms from '../components/Forms';
+import './styles/Login.css';
 
 function Register() {
   return (
-    <div>
-      Register
+    <div className="login-container">
+      <Forms />
     </div>
   )
 }
