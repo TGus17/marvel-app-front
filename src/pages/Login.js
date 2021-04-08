@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { verifyEmailAndPassword } from '../util/verifications';
-import { loginProcess } from '../service';
-import Forms from '../components/Forms';
+import { Forms, SignInButton } from '../components';
 import './styles/Login.css';
 
 function Login() {
@@ -11,17 +10,6 @@ function Login() {
   const [isDisable, setIsDisable] = useState(true);
   const [wrongData, setWrongData] = useState(false);
   const history = useHistory();
-
-  const validateUser = (data) => {
-    if (data.message && data.message === 'Invalid datas') return setWrongData(true);
-    localStorage.setItem('token', JSON.stringify(data.token));
-    history.push('/home')
-  }
-  const clickButton = async () => {
-    const body = { email, password };
-    const response = await loginProcess('login', body);
-    validateUser(response);
-  }
 
   useEffect(() => {
     setIsDisable(!verifyEmailAndPassword(email, password));
@@ -35,14 +23,12 @@ function Login() {
         setPassword={setPassword}
       />
       <div className="col-auto buttons">
-        <button
-          type="button"
-          className="btn signin-button mb-0"
-          onClick={ clickButton }
-          disabled={ isDisable }
-        >
-          Sign in
-        </button>
+        <SignInButton
+          isDisable={ isDisable }
+          setWrongData={setWrongData}
+          email={email}
+          password={password}
+        />
         <button
           type="button"
           className="btn mb-0 register-button"
