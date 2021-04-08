@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { verifyEmailAndPassword } from '../util/verifications';
-import { Forms, SignInButton } from '../components';
+import { Forms, ButtonComponent } from '../components';
+import AppContext from '../context/AppContext';
 import './styles/Login.css';
 
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [isDisable, setIsDisable] = useState(true);
-  const [wrongData, setWrongData] = useState(false);
+  const { email, password, wrongData, setWrongData, setIsDisable } = useContext(AppContext);
   const history = useHistory();
 
   useEffect(() => {
@@ -18,16 +16,12 @@ function Login() {
 
   return (
     <div className="login-container">
-      <Forms
-        setEmail={setEmail}
-        setPassword={setPassword}
-      />
+      <Forms />
       <div className="col-auto buttons">
-        <SignInButton
-          isDisable={ isDisable }
-          setWrongData={setWrongData}
-          email={email}
-          password={password}
+        <ButtonComponent
+          body={ { email, password } }
+          label='Sign In'
+          endpoint='login'
         />
         <button
           type="button"
@@ -38,7 +32,7 @@ function Login() {
         </button>
       </div>
       <div>
-        { wrongData && <span>Dados inválidos.</span> }
+        { wrongData && <span>Invalid datas.</span> }
       </div>
     </div>
   );
