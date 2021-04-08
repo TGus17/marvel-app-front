@@ -1,7 +1,8 @@
-import fetchApi from './apiService';
+import { fetchCharactersOrComics, fetchMarvelData } from './apiService';
 import requestProcess from './apiBackend';
 
 export {
   requestProcess,
-  fetchApi,
+  fetchCharactersOrComics,
+  fetchMarvelData,
 };
