@@ -1,23 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { verifyEmailAndPassword } from '../util/verifications';
-import fetchApi from '../service/apiService';
+import { loginProcess } from '../service';
 import './styles/Login.css';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isDisable, setIsDisable] = useState(true)
+  const [isDisable, setIsDisable] = useState(true);
+  const [wrongData, setWrongData] = useState(false);
   const history = useHistory();
 
-  const clickButton = () => {
-    fetchApi()
-      .then(response => console.log(response));
+  const validateUser = (data) => {
+    if (data.message && data.message === 'Invalid datas') return setWrongData(true);
+    localStorage.setItem('token', JSON.stringify(data.token));
     history.push('/home')
+  }
+  const clickButton = async () => {
+    const body = { email, password };
+    const response = await loginProcess('login', body);
+    validateUser(response);
   }
 
   useEffect(() => {
-    setIsDisable(!verifyEmailAndPassword(email, password))
+    setIsDisable(!verifyEmailAndPassword(email, password));
+    setWrongData(false);
   }, [email, password]);
 
   return (
@@ -71,6 +78,9 @@ function Login() {
           >
             Register
           </button>
+        </div>
+        <div>
+          { wrongData && <span>Dados inválidos.</span> }
         </div>
       </form>
     </div>
