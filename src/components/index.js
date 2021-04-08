@@ -1,7 +1,7 @@
 import Forms from './Forms';
-import SignInButton from './SignInButton';
+import ButtonComponent from './ButtonComponent';
 
 export {
   Forms,
-  SignInButton,
+  ButtonComponent,
 };

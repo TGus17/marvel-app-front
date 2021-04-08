@@ -9,8 +9,8 @@ const options = (body = null) => ({
   body: JSON.stringify(body),
 });
 
-const loginProcess = async (endpoint, body) => await fetch(`${baseUrl}/${endpoint}`, options(body))
+const requestProcess = async (endpoint, body) => await fetch(`${baseUrl}/${endpoint}`, options(body))
   .then((response) => response.json())
   .catch((err) => console.log(err.message));
 
-export default loginProcess;
+export default requestProcess;
