@@ -5,7 +5,16 @@ import AppContext from '../context/AppContext';
 import { verifyEmailAndPassword } from '../util/verifications';
 
 function Register() {
-  const { setName, name, email, password, wrongData, setIsDisable, setWrongData, messageOfError, setMessageOfError } = useContext(AppContext);
+  const {
+    setName,
+    name,
+    email,
+    password,
+    wrongData,
+    setIsDisable,
+    setWrongData,
+    messageOfError,
+  } = useContext(AppContext);
 
   useEffect(() => {
     setIsDisable(!verifyEmailAndPassword(email, password));
@@ -38,7 +47,7 @@ function Register() {
         />
       </div>
       <div>
-        { wrongData && <span>Invalid datas.</span> }
+        { wrongData && messageOfError }
       </div>
     </div>
   )

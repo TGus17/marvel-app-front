@@ -6,7 +6,14 @@ import AppContext from '../context/AppContext';
 import './styles/Login.css';
 
 function Login() {
-  const { email, password, wrongData, setWrongData, setIsDisable } = useContext(AppContext);
+  const {
+    email,
+    password,
+    wrongData,
+    setWrongData,
+    setIsDisable,
+    messageOfError,
+  } = useContext(AppContext);
   const history = useHistory();
 
   useEffect(() => {
@@ -32,7 +39,7 @@ function Login() {
         </button>
       </div>
       <div>
-        { wrongData && <span>Invalid datas.</span> }
+        { wrongData && messageOfError }
       </div>
     </div>
   );

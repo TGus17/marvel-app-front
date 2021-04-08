@@ -5,17 +5,14 @@ import AppContext from '../context/AppContext';
 
 function ButtonComponent({ body, label, endpoint }) {
   const history = useHistory();
-  const { setWrongData, isDisable } = useContext(AppContext);
-
-  // const validateUser = (data) => {
-  //   if (data.message && data.message === 'Invalid datas') return setWrongData(true);
-  //   // localStorage.setItem('token', JSON.stringify(data.token));
-  //   history.push('/home')
-  // }
+  const { setWrongData, isDisable, setMessageOfError } = useContext(AppContext);
 
   const validateUser = (data) => {
-    if (data.message && data.message === 'Invalid datas') return setWrongData(true);
-    // localStorage.setItem('token', JSON.stringify(data.token));
+    if (data.message) {
+      setWrongData(true);
+      return setMessageOfError(data.message);
+    }
+    localStorage.setItem('token', JSON.stringify(data.token));
     history.push('/home')
   }
 
@@ -23,7 +20,7 @@ function ButtonComponent({ body, label, endpoint }) {
     console.log('endpoitn', endpoint);
     const response = await requestProcess(endpoint, body);
     console.log(response);
-    // validateUser(response);
+    validateUser(response);
   }
 
   return (
