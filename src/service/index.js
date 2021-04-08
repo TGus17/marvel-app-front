@@ -1,7 +1,7 @@
 import fetchApi from './apiService';
-import loginProcess from './apiBackend';
+import requestProcess from './apiBackend';
 
 export {
-  loginProcess,
+  requestProcess,
   fetchApi,
 };
