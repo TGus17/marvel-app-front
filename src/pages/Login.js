@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { verifyEmailAndPassword } from '../util/verifications';
+import fetchApi from '../service/apiService';
 import './styles/Login.css';
 
 function Login() {
@@ -8,6 +9,12 @@ function Login() {
   const [password, setPassword] = useState('');
   const [isDisable, setIsDisable] = useState(true)
   const history = useHistory();
+
+  const clickButton = () => {
+    fetchApi()
+      .then(response => console.log(response));
+    history.push('/home')
+  }
 
   useEffect(() => {
     setIsDisable(!verifyEmailAndPassword(email, password))
@@ -52,7 +59,7 @@ function Login() {
           <button
             type="button"
             className="btn signin-button mb-0"
-            onClick={ () => history.push('/home') }
+            onClick={ clickButton }
             disabled={ isDisable }
           >
             Sign in
