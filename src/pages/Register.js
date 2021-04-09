@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 import { ButtonComponent, Forms } from '../components';
-import './styles/Login.css';
 import AppContext from '../context/AppContext';
 import { verifyEmailAndPassword } from '../util/verifications';
+import './styles/Login.css';
 
 function Register() {
   const {
@@ -44,6 +44,7 @@ function Register() {
           body={ { name, email, password } }
           label='Sign Up'
           endpoint='register'
+          redirect='/'
         />
       </div>
       <div>
