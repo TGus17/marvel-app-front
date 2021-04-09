@@ -3,23 +3,31 @@ import { useHistory } from 'react-router-dom';
 import { requestProcess } from '../service';
 import AppContext from '../context/AppContext';
 
-function ButtonComponent({ body, label, endpoint }) {
+function ButtonComponent({ body, label, endpoint, redirect }) {
   const history = useHistory();
-  const { setWrongData, isDisable, setMessageOfError } = useContext(AppContext);
+  const {
+    setWrongData,
+    isDisable,
+    setMessageOfError,
+    setUserRegistered,
+  } = useContext(AppContext);
+
+  const redirectUser = (data) => {
+    if (redirect === 'home') localStorage.setItem('token', JSON.stringify(data.token));
+    setUserRegistered(true);
+    return history.push(redirect)
+  }
 
   const validateUser = (data) => {
     if (data.message) {
       setWrongData(true);
       return setMessageOfError(data.message);
     }
-    localStorage.setItem('token', JSON.stringify(data.token));
-    history.push('/home')
+    redirectUser(data);
   }
 
   const clickButton = async () => {
-    console.log('endpoitn', endpoint);
     const response = await requestProcess(endpoint, body);
-    console.log(response);
     validateUser(response);
   }
 

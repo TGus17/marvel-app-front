@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { verifyEmailAndPassword } from '../util/verifications';
 import { Forms, ButtonComponent } from '../components';
@@ -13,13 +13,25 @@ function Login() {
     setWrongData,
     setIsDisable,
     messageOfError,
+    userRegistered,
+    setUserRegistered,
   } = useContext(AppContext);
   const history = useHistory();
+
+  const verifyIfNewUser = () => {
+    if (userRegistered) return setUserRegistered(true);
+    return setUserRegistered(false);
+  }
 
   useEffect(() => {
     setIsDisable(!verifyEmailAndPassword(email, password));
     setWrongData(false);
+    setUserRegistered(false);
   }, [email, password]);
+
+  useEffect(() => {
+    verifyIfNewUser();
+  }, []);
 
   return (
     <div className="login-container">
@@ -29,6 +41,7 @@ function Login() {
           body={ { email, password } }
           label='Sign In'
           endpoint='login'
+          redirect='home'
         />
         <button
           type="button"
@@ -40,6 +53,7 @@ function Login() {
       </div>
       <div>
         { wrongData && messageOfError }
+        { userRegistered && 'User Registered! Please log in.' }
       </div>
     </div>
   );

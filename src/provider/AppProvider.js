@@ -8,6 +8,7 @@ function AppProvider({ children }) {
   const [wrongData, setWrongData] = useState(false);
   const [isDisable, setIsDisable] = useState(true);
   const [messageOfError, setMessageOfError] = useState('');
+  const [userRegistered, setUserRegistered] = useState(false);
 
   const contextValue = {
     name,
@@ -22,6 +23,8 @@ function AppProvider({ children }) {
     setIsDisable,
     messageOfError,
     setMessageOfError,
+    userRegistered,
+    setUserRegistered,
   }
   return (
     <AppContext.Provider value={ contextValue }>
