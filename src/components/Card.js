@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import './styles/ComicCard.css';
 import { fetchMarvelData } from '../service';
 
-const Card = ({ uri, name, image }) => {
+const Card = ({ uri, name, image, showCharacters }) => {
   
   const clickPicture = async () => {
     const data = await fetchMarvelData(uri);
     console.log(data);
   }
+  if (!showCharacters) 
 
   return (
     <div
