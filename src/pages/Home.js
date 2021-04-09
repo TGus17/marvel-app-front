@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { fetchCharactersOrComics } from '../service';
+import { useHistory } from 'react-router-dom';
 import Card from '../components/Card';
 import './styles/Home.css';
 
@@ -8,6 +9,7 @@ function Home() {
   const [showComics, setShowComics] = useState(false);
   const [data, setData] = useState([]);
   const title = showCharacters ? 'Characters' : 'Comics';
+  const history = useHistory();
   const changeToComics = () => {
     setShowCharacters(false);
     setShowComics(true);
@@ -45,6 +47,11 @@ function Home() {
         onClick={ changeToCharacters }
       >
         Show Characters
+      </button>
+      <button
+        onClick={ () => history.push('/profile') }
+      >
+        Show settings
       </button>
       <div className="home-container">
         {data.map((data) => (
