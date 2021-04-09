@@ -7,14 +7,23 @@ function Home() {
   const [showCharacters, setShowCharacters] = useState(true);
   const [showComics, setShowComics] = useState(false);
   const [data, setData] = useState([]);
-
-  const changeComics = () => {
+  const title = showCharacters ? 'Characters' : 'Comics';
+  const changeToComics = () => {
     setShowCharacters(false);
     setShowComics(true);
   }
 
+  const changeToCharacters = () => {
+    setShowComics(false);
+    setShowCharacters(true);
+  }
+
   const showDatas = async () => {
-    const allData = (showCharacters ? await fetchCharactersOrComics('characters') : await fetchCharactersOrComics('comics'));
+    const allData = (
+      showCharacters ?
+      await fetchCharactersOrComics('characters') :
+      await fetchCharactersOrComics('comics')
+    );
     return setData(allData.data.results);
   }
 
@@ -24,35 +33,24 @@ function Home() {
 
   return (
     <div>
+      <div>
+        <h2>{title}</h2>
+      </div>
       <button
-        onClick={ changeComics }
+        onClick={ changeToComics }
       >
         Show Comics
       </button>
+      <button
+        onClick={ changeToCharacters }
+      >
+        Show Characters
+      </button>
       <div className="home-container">
-        {data.map((data)
-          // resourceURI,
-          // name,
-          // thumbnail: { extension, path },
-          // comics,
-          // series,
-          // stories,
-          // events,
-          // urls,
-        ) => (
-          // <Card
-          //   name={name}
-          //   image={`${path}.${extension}`}
-          //   uri={ resourceURI }
-          //   comics={ comics }
-          //   series={ series }
-          //   stories={ stories }
-          //   events={ events }
-          //   urls={ urls }
-          //   character={ showCharacters }
-          // />
+        {data.map((data) => (
           <Card
-
+            data={data}
+            showCharacters={showCharacters}
           />
           ))
         }
