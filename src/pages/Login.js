@@ -10,24 +10,22 @@ function Login() {
   const {
     email,
     password,
-    wrongData,
-    setWrongData,
+    comebackData,
+    setComebackData,
     setIsDisable,
-    messageOfError,
-    userRegistered,
-    setUserRegistered,
+    messageResponse,
   } = useContext(AppContext);
   const history = useHistory();
 
   const verifyIfNewUser = () => {
-    if (userRegistered) return setUserRegistered(true);
-    return setUserRegistered(false);
+    if (comebackData) return setComebackData(true);
+    return setComebackData(false);
   }
 
   useEffect(() => {
     setIsDisable(!verifyEmailAndPassword(email, password));
-    setWrongData(false);
-    setUserRegistered(false);
+    setComebackData(false);
+    // setUserRegistered(false);
   }, [email, password]);
 
   useEffect(() => {
@@ -53,8 +51,7 @@ function Login() {
         </button>
       </div>
       <div>
-        { wrongData && messageOfError }
-        { userRegistered && 'User Registered! Please log in.' }
+        { comebackData && messageResponse }
       </div>
     </div>
   );

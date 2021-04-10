@@ -11,15 +11,15 @@ function Register() {
     name,
     email,
     password,
-    wrongData,
+    comebackData,
     setIsDisable,
-    setWrongData,
-    messageOfError,
+    setComebackData,
+    messageResponse,
   } = useContext(AppContext);
 
   useEffect(() => {
     setIsDisable(!verifyEmailAndPassword(email, password));
-    setWrongData(false);
+    setComebackData(false);
   }, [email, password]);
 
   return (
@@ -36,7 +36,7 @@ function Register() {
         />
       </div>
       <div>
-        { wrongData && messageOfError }
+        { comebackData && messageResponse }
       </div>
     </div>
   )
