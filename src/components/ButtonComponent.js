@@ -27,7 +27,7 @@ function ButtonComponent({ body, label, endpoint, redirect }) {
   }
 
   const clickButton = async () => {
-    const response = await requestProcess(endpoint, body);
+    const response = await requestProcess(endpoint, null, 'POST', body);
     validateUser(response);
   }
 
