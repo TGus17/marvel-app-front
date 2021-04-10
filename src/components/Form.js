@@ -2,13 +2,28 @@ import React, { useContext } from 'react';
 import AppContext from '../context/AppContext';
 import '../pages/styles/Login.css';
 
-const Forms = () => {
-  const { setEmail, setPassword } = useContext(AppContext);
+function Form({ showName }) {
+  const { setEmail, setPassword, setName } = useContext(AppContext);
 
   return (
     <form
       className="row g-3"
     >
+      {showName && <div className="mb-3">
+        <label
+          htmlFor="email"
+          className="form-label"
+        >
+          Name
+        </label>
+        <input
+          type="text"
+          className="form-control"
+          id="name"
+          placeholder="name"
+          onChange={ (e) => setName(e.target.value) }
+        />
+      </div>}
       <div className="mb-3">
         <label
           htmlFor="email"
@@ -43,4 +58,4 @@ const Forms = () => {
   )
 }
 
-export default Forms
+export default Form
