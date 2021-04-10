@@ -6,24 +6,23 @@ import AppContext from '../context/AppContext';
 function ButtonComponent({ body, label, endpoint, redirect }) {
   const history = useHistory();
   const {
-    setWrongData,
+    setComebackData,
     isDisable,
-    setMessageOfError,
-    setUserRegistered,
+    setMessageResponse,
   } = useContext(AppContext);
 
   const redirectUser = (data) => {
     if (redirect === 'home') localStorage.setItem('token', JSON.stringify(data.token));
-    setUserRegistered(true);
     return history.push(redirect)
   }
 
   const validateUser = (data) => {
-    if (data.message) {
-      setWrongData(true);
-      return setMessageOfError(data.message);
+    setComebackData(true);
+    setMessageResponse(data.message);
+
+    if (!data.err) {
+      return redirectUser(data);
     }
-    redirectUser(data);
   }
 
   const clickButton = async () => {
