@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { fetchCharactersOrComics } from '../service';
 import { useHistory } from 'react-router-dom';
-import Card from '../components/Card';
+import { Card } from '../components';
 import './styles/Home.css';
 
 function Home() {
