@@ -1,7 +1,8 @@
 import React, { useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { verifyEmailAndPassword } from '../util/verifications';
-import { Forms, ButtonComponent } from '../components';
+import { Form, ButtonComponent } from '../components';
+// import Form2 from '../components/Form';
 import AppContext from '../context/AppContext';
 import './styles/Login.css';
 
@@ -35,7 +36,7 @@ function Login() {
 
   return (
     <div className="login-container">
-      <Forms />
+      <Form showName={false} />
       <div className="col-auto buttons">
         <ButtonComponent
           body={ { email, password } }
