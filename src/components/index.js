@@ -1,4 +1,4 @@
-import Form from './Forms';
+import Form from './Form';
 import ButtonComponent from './ButtonComponent';
 import Card from './Card'
 

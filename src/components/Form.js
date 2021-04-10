@@ -3,7 +3,13 @@ import AppContext from '../context/AppContext';
 import '../pages/styles/Login.css';
 
 function Form({ showName }) {
-  const { setEmail, setPassword, setName } = useContext(AppContext);
+  const {
+    email,
+    setEmail,
+    setPassword,
+    name,
+    setName,
+  } = useContext(AppContext);
 
   return (
     <form
@@ -22,6 +28,7 @@ function Form({ showName }) {
           id="name"
           placeholder="name"
           onChange={ (e) => setName(e.target.value) }
+          value={ name }
         />
       </div>}
       <div className="mb-3">
@@ -37,6 +44,7 @@ function Form({ showName }) {
           id="email"
           placeholder="name@example.com"
           onChange={ (e) => setEmail(e.target.value) }
+          value={ email }
         />
       </div>
       <div className="mb-3">
