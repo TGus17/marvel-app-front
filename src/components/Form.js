@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import AppContext from '../context/AppContext';
 import '../pages/styles/Login.css';
 
@@ -9,7 +9,21 @@ function Form({ showName }) {
     setPassword,
     name,
     setName,
+    messageResponse,
   } = useContext(AppContext);
+
+  const verifyUserIsDeleted = () => {
+    if (messageResponse === 'User has been deleted.') {
+      setEmail('');
+      setPassword('');
+      setName('');
+      localStorage.removeItem('token');
+    }
+  }
+
+  useEffect(() => {
+    verifyUserIsDeleted();
+  }, []);
 
   return (
     <form

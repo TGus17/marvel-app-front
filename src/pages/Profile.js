@@ -7,7 +7,15 @@ import './styles/Login.css';
 
 
 function Profile() {
-  const {email, setEmail, password, name, setName, comebackData, messageResponse} = useContext(AppContext);
+  const {
+    email,
+    setEmail,
+    password,
+    name,
+    setName,
+    comebackData,
+    messageResponse,
+  } = useContext(AppContext);
   const history = useHistory();
 
   const setUser = (user) => {

@@ -27,9 +27,9 @@ function ButtonComponent({ label, endpoint, method, body, redirect }) {
 
   const clickButton = async () => {
     const authorization = JSON.parse(localStorage.getItem('token')) ?
-      JSON.parse(localStorage.getItem('token')) : null;
+    JSON.parse(localStorage.getItem('token')) : null;
     const response = await requestProcess(endpoint, authorization, method, body);
-    console.log(response);
+
     validateUser(response);
   }
 

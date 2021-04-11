@@ -24,7 +24,6 @@ function Login() {
   useEffect(() => {
     setIsDisable(!verifyEmailAndPassword(email, password));
     setComebackData(false);
-    // setUserRegistered(false);
   }, [email, password]);
 
   useEffect(() => {
