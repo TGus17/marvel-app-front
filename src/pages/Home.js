@@ -7,10 +7,8 @@ import AppContext from '../context/AppContext';
 import './styles/Home.css';
 
 function Home() {
-  const [showCharacters, setShowCharacters] = useState(true);
-  const [showComics, setShowComics] = useState(false);
   const [data, setData] = useState([]);
-  const { setEmail, setName } = useContext(AppContext);
+  const { setEmail, setName, showCharacters, setShowCharacters, showComics, setShowComics } = useContext(AppContext);
   const title = showCharacters ? 'Characters' : 'Comics';
   const history = useHistory();
   const changeToComics = () => {
@@ -29,6 +27,7 @@ function Home() {
       await fetchCharactersOrComics('characters') :
       await fetchCharactersOrComics('comics')
     );
+    console.log(allData.data.results);
     return setData(allData.data.results);
   }
 
@@ -61,7 +60,6 @@ function Home() {
         {data.map((data) => (
           <Card
             data={data}
-            showCharacters={showCharacters}
           />
           ))
         }

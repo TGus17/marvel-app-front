@@ -1,25 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-// import { useHistory } from 'react-router-dom';
+import AppContext from '../context/AppContext';
 import PropTypes from 'prop-types';
 import './styles/ComicCard.css';
-import { fetchMarvelData } from '../service';
 
-const Card = ({ data, showCharacters }) => {
+const Card = ({ data }) => {
+  const { showCharacters } = useContext(AppContext);
   const image = `${data.thumbnail.path}.${data.thumbnail.extension}`;
-  const name = showCharacters ? data.name : data.title;
   const uri = data.resourceURI;
-  console.log('data', data.id);
-  // const history = useHistory();
-  
-  const clickPicture = async () => {
-    // const dataComeback = await fetchMarvelData(uri);
-    // const [response] = dataComeback.data.results;
-    // console.log('response', response);
-    // console.log(data);
-    // const [{ id }] = data.data.results;
-    // console.log('id', id);
-  }
 
   return (
     <Link
@@ -27,10 +15,9 @@ const Card = ({ data, showCharacters }) => {
     >
       <div
         className="card-container"
-        onClick={ clickPicture }
       >
-        <img src={image} alt={name} className="card-container"/>
-        <p className="title">{name}</p>
+        <img src={image} alt={ showCharacters ? data.name : data.title } className="card-container"/>
+        <p className="title">{ showCharacters ? data.name : data.title }</p>
       </div>
     </Link>
   )

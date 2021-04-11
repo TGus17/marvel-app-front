@@ -8,7 +8,9 @@ function AppProvider({ children }) {
   const [comebackData, setComebackData] = useState(false);
   const [isDisable, setIsDisable] = useState(true);
   const [messageResponse, setMessageResponse] = useState('');
-  // const [deletedUser, setDeletedUser] = useState(false);
+  const [showCharacters, setShowCharacters] = useState(true);
+  const [showComics, setShowComics] = useState(false);
+  // const [isFavorite, setIsFavorite] = useState(false);
 
   const contextValue = {
     name,
@@ -23,8 +25,12 @@ function AppProvider({ children }) {
     setIsDisable,
     messageResponse,
     setMessageResponse,
-    // deletedUser,
-    // setDeletedUser,
+    showCharacters,
+    setShowCharacters,
+    showComics,
+    setShowComics,
+    // isFavorite,
+    // setIsFavorite,
   }
   return (
     <AppContext.Provider value={ contextValue }>
