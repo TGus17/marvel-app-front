@@ -7,7 +7,7 @@ import './styles/Login.css';
 
 
 function Profile() {
-  const {email, setEmail, password, name, setName} = useContext(AppContext);
+  const {email, setEmail, password, name, setName, comebackData, messageResponse} = useContext(AppContext);
   const history = useHistory();
 
   const setUser = (user) => {
@@ -27,6 +27,7 @@ function Profile() {
   return (
     <div className="login-container">
       <Form showName={true} />
+      <div>
       <ButtonComponent
         body={ { name, email, password, } }
         label="Save Changes"
@@ -34,6 +35,17 @@ function Profile() {
         redirect="/"
         method="PUT"
       />
+      <ButtonComponent
+        body={null}
+        label="Delete User"
+        endpoint="user"
+        redirect="/"
+        method="DELETE"
+      />
+      </div>
+      <div>
+        { comebackData && messageResponse }
+      </div>
     </div>
   )
 }
