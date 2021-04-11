@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { requestProcess } from '../service';
 import AppContext from '../context/AppContext';
 
-function ButtonComponent({ body, label, endpoint, redirect }) {
+function ButtonComponent({ label, endpoint, method, body, redirect }) {
   const history = useHistory();
   const {
     setComebackData,
@@ -26,7 +26,10 @@ function ButtonComponent({ body, label, endpoint, redirect }) {
   }
 
   const clickButton = async () => {
-    const response = await requestProcess(endpoint, null, 'POST', body);
+    const authorization = JSON.parse(localStorage.getItem('token')) ?
+      JSON.parse(localStorage.getItem('token')) : null;
+    const response = await requestProcess(endpoint, authorization, method, body);
+    console.log(response);
     validateUser(response);
   }
 

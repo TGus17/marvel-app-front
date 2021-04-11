@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { verifyUser } from '../util/verifications';
 import { Form, ButtonComponent } from '../components';
@@ -7,8 +7,7 @@ import './styles/Login.css';
 
 
 function Profile() {
-  const {setEmail, setPassord, setName} = useContext(AppContext);
-  // const [user, setUser] = useState({});
+  const {email, setEmail, password, name, setName} = useContext(AppContext);
   const history = useHistory();
 
   const setUser = (user) => {
@@ -28,6 +27,13 @@ function Profile() {
   return (
     <div className="login-container">
       <Form showName={true} />
+      <ButtonComponent
+        body={ { name, email, password, } }
+        label="Save Changes"
+        endpoint="user"
+        redirect="/"
+        method="PUT"
+      />
     </div>
   )
 }

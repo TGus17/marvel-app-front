@@ -2,7 +2,6 @@ import React, { useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { verifyEmailAndPassword } from '../util/verifications';
 import { Form, ButtonComponent } from '../components';
-// import Form2 from '../components/Form';
 import AppContext from '../context/AppContext';
 import './styles/Login.css';
 
@@ -41,6 +40,7 @@ function Login() {
           label='Sign In'
           endpoint='login'
           redirect='home'
+          method="POST"
         />
         <button
           type="button"

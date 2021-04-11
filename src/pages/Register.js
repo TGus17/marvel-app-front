@@ -1,13 +1,11 @@
 import React, { useContext, useEffect } from 'react';
 import { ButtonComponent, Form } from '../components';
-// import Form2 from '../components/Form';
 import AppContext from '../context/AppContext';
 import { verifyEmailAndPassword } from '../util/verifications';
 import './styles/Login.css';
 
 function Register() {
   const {
-    setName,
     name,
     email,
     password,
@@ -33,6 +31,7 @@ function Register() {
           label='Sign Up'
           endpoint='register'
           redirect='/'
+          method="POST"
         />
       </div>
       <div>
