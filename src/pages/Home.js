@@ -27,7 +27,7 @@ function Home() {
       await fetchCharactersOrComics('characters') :
       await fetchCharactersOrComics('comics')
     );
-    console.log(allData.data.results);
+    // console.log(allData.data.results);
     return setData(allData.data.results);
   }
 

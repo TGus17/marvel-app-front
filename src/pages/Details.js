@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { fetchMarvelData } from '../service';
-import AppContext from '../context/AppContext';
+// import AppContext from '../context/AppContext';
+import { DetailCard } from '../components';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import whiteHeart from '../images/whiteHeartIcon.svg';
 
@@ -10,12 +11,22 @@ function Details(props) {
   const [downloaded, setDownloaded] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
   const { location: { state: { data } }, match: { params: { id } } } = props;
-  const uri = data.resourceURI;
-  console.log('state.data', data);
+  // const uri = data.resourceURI;
+  const { resourceURI } = data;
+  // const literalName = data.name ? 'comics' : 'characters';
+  // const literalTitle = data.name ? 'title' : 'name';
+  // const variable = `${data[literalName].items}`;
+  // console.log('variavel1', data.characters.items);
+  // console.log('variavel2', JSON.stringify(variable));
+  // console.log('name', literalName);
+  // console.log('title', literalTitle);
+  // const print = `${data}`;
+  // console.log('state.data', `${data[literalName].items[0][literalTitle]}`);
+  // console.log('state.data', data.comics.items[0], literal);
   
 
   const fetchData = async () => {
-    const { data: { results: [fetchedResult] } } = await fetchMarvelData(uri);
+    const { data: { results: [fetchedResult] } } = await fetchMarvelData(resourceURI);
     setMarvelData(fetchedResult);
     // setDownloaded funcionou para não quebrar a renderização
     setDownloaded(true);
@@ -37,7 +48,7 @@ function Details(props) {
       const deleteFavorite = arrayObject.filter((item) => item.id !== id);
       return localStorage.setItem(key, JSON.stringify(deleteFavorite));
     }
-    const includeFavorite = [...arrayObject, { id, uri }]
+    const includeFavorite = [...arrayObject, { id, resourceURI }]
     return localStorage.setItem(key, JSON.stringify(includeFavorite));
   }
 
@@ -47,7 +58,7 @@ function Details(props) {
     const favoriteCharacters = JSON.parse(localStorage.getItem(key));
     if (!favoriteCharacters || favoriteCharacters.length === 0) {
       setIsFavorite(true);
-      return localStorage.setItem(key, JSON.stringify([{ id, uri }]));
+      return localStorage.setItem(key, JSON.stringify([{ id, resourceURI }]));
     }
     dealWithStorage(favoriteCharacters, key);
     setIsFavorite(!isFavorite);
@@ -65,11 +76,38 @@ function Details(props) {
           <img src={ isFavorite ? blackHeartIcon : whiteHeart } alt='favorite' />
         </button>
       </div>
-      <h1>{data.name ? marvelData.name : marvelData.title}</h1>
-      <p>{marvelData.description}</p>
-      {/* const downloaded é para renderizar apenas se a resposta da api já tiver retornado */}
-      {downloaded &&
-        <img src={`${marvelData.thumbnail.path}.${marvelData.thumbnail.extension}`} alt={marvelData.name}/>}
+      <div>
+        <h1>{data.name ? marvelData.name : marvelData.title}</h1>
+        <p>{marvelData.description}</p>
+        {/* const downloaded é para renderizar apenas se a resposta da api já tiver retornado */}
+        {downloaded &&
+          <img src={`${marvelData.thumbnail.path}.${marvelData.thumbnail.extension}`} alt={marvelData.name}/>}
+      </div>
+      <div>
+        <h3>{data.name ? 'Related Comics' : 'Related Characters'}</h3>
+        {
+          data.name
+            ?
+            data.comics.items.map((item) => (
+              <DetailCard
+                item={item}
+              />
+              // <h4>{item.name}</h4>
+            ))
+            :
+            data.characters.items.map((item) => (
+              <DetailCard
+                item={item}
+              />
+              // <h4>{item.name}</h4>
+            ))
+        }
+        {/* {variable.map((item) => (
+          <div>
+          </div>
+        ))} */}
+        {/* <h4>{`${data[literalName].items[0][literalTitle]}`}</h4> */}
+      </div>
     </div>
   );
 }

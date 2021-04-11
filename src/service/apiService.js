@@ -12,7 +12,7 @@ const apiKey = REACT_APP_PUBLIC_KEY || '68f698fee41b2eced262533902aeccbe';
 const hash = md5(`${timeStamp}${privateKey}${apiKey}`);
 
 const fetchCharactersOrComics = async (param) => {
-  const url = `http://gateway.marvel.com/v1/public/${param}?ts=${timeStamp}&apikey=${apiKey}&hash=${hash}`;
+  const url = `http://gateway.marvel.com/v1/public/${param}?ts=${timeStamp}&apikey=${apiKey}&hash=${hash}&limit=6`;
   const allData = await fetch(url);
   const allDataParsed = allData.json();
   return allDataParsed;
