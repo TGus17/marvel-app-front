@@ -5,11 +5,13 @@ import blackHeartIcon from '../images/blackHeartIcon.svg';
 import whiteHeart from '../images/whiteHeartIcon.svg';
 
 function Details(props) {
-  const { showCharacters } = useContext(AppContext);
+  // const { showCharacters } = useContext(AppContext);
   const [marvelData, setMarvelData] = useState({});
   const [downloaded, setDownloaded] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
-  const { location: { state: { uri } }, match: { params: { id } } } = props;
+  const { location: { state: { data } }, match: { params: { id } } } = props;
+  const uri = data.resourceURI;
+  console.log('state.data', data);
   
 
   const fetchData = async () => {
@@ -20,12 +22,13 @@ function Details(props) {
   };
 
   const checkFavorites = () => {
-    const key = showCharacters ? 'favoriteCharacters' : 'favoriteComics';
+    const key = data.name ? 'favoriteCharacters' : 'favoriteComics';
     const favoriteData = JSON.parse(localStorage.getItem(key));
-    if (favoriteData || favoriteData.length !== 0) {
+    if (favoriteData && favoriteData.length !== 0) {
       const itIsFavorite = favoriteData.filter((item) => item.id === id);
-      if (itIsFavorite.length > 0) setIsFavorite(true);
+      if (itIsFavorite.length > 0) return setIsFavorite(true);
     }
+    return setIsFavorite(false);
   }
 
   const dealWithStorage = (arrayObject, key) => {
@@ -40,9 +43,10 @@ function Details(props) {
 
 
   const markAndUnmarkAsFavorite = () => {
-    const key = showCharacters ? 'favoriteCharacters' : 'favoriteComics';
+    const key = data.name ? 'favoriteCharacters' : 'favoriteComics';
     const favoriteCharacters = JSON.parse(localStorage.getItem(key));
     if (!favoriteCharacters || favoriteCharacters.length === 0) {
+      setIsFavorite(true);
       return localStorage.setItem(key, JSON.stringify([{ id, uri }]));
     }
     dealWithStorage(favoriteCharacters, key);
@@ -61,7 +65,7 @@ function Details(props) {
           <img src={ isFavorite ? blackHeartIcon : whiteHeart } alt='favorite' />
         </button>
       </div>
-      <h1>{showCharacters ? marvelData.name : marvelData.title}</h1>
+      <h1>{data.name ? marvelData.name : marvelData.title}</h1>
       <p>{marvelData.description}</p>
       {/* const downloaded é para renderizar apenas se a resposta da api já tiver retornado */}
       {downloaded &&

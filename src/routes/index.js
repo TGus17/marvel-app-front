@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { Login, Home, Register, Profile, Details } from '../pages';
+import { Login, Home, Register, Profile, Details, Favorites } from '../pages';
 
 function index() {
   return (
@@ -13,6 +13,7 @@ function index() {
         path="/details/:id"
         render={ (props) => <Details { ...props } /> }
       />
+      <Route exact path='/favorites' component={ Favorites } />
     </Switch>
   );
 }

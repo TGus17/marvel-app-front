@@ -56,6 +56,11 @@ function Home() {
       >
         Show settings
       </button>
+      <button
+        onClick={ () => history.push('/favorites') }
+      >
+        Show favorites
+      </button>
       <div className="home-container">
         {data.map((data) => (
           <Card

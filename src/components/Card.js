@@ -11,7 +11,7 @@ const Card = ({ data }) => {
 
   return (
     <Link
-      to={ { pathname:`/details/${data.id}`, state: { uri } } }
+      to={ { pathname:`/details/${data.id}`, state: { uri, data } } }
     >
       <div
         className="card-container"

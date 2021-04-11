@@ -10,7 +10,6 @@ function AppProvider({ children }) {
   const [messageResponse, setMessageResponse] = useState('');
   const [showCharacters, setShowCharacters] = useState(true);
   const [showComics, setShowComics] = useState(false);
-  // const [isFavorite, setIsFavorite] = useState(false);
 
   const contextValue = {
     name,

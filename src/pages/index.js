@@ -3,6 +3,7 @@ import Home from './Home';
 import Register from './Register';
 import Profile from './Profile';
 import Details from './Details';
+import Favorites from './Favorites';
 
 export {
   Login,
@@ -10,4 +11,5 @@ export {
   Register,
   Profile,
   Details,
+  Favorites,
 };
