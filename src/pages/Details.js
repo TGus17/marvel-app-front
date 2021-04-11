@@ -1,4 +1,3 @@
-import { object } from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { fetchMarvelData } from '../service';
 
@@ -14,16 +13,7 @@ function Details(props) {
     setDownloaded(true);
   };
 
-  // const method = (objeto, id) => {
-  //   if (objeto) {
-  //     const deleteFavorite = favoriteCharacters.filter((item) => item.id !== id);
-  //     localStorage.setItem('favoriteCharacters', JSON.stringify(deleteFavorite));
-  //   }
-  //   const includeFavorite = [...favoriteCharacters, { id, uri }]
-  //   localStorage.setItem('favoriteCharacters', JSON.stringify(includeFavorite));
-  // }
-
-  const dealWithCharacter = (arrayObject) => {
+  const dealWithStorage = (arrayObject) => {
     const containsFavorite = arrayObject.filter((item) => item.id === id);
     if (containsFavorite.length !== 0) {
       const deleteFavorite = arrayObject.filter((item) => item.id !== id);
@@ -39,18 +29,7 @@ function Details(props) {
     if (!favoriteCharacters || favoriteCharacters.length === 0) {
       return localStorage.setItem('favoriteCharacters', JSON.stringify([{ id, uri }]));
     }
-    dealWithCharacter(favoriteCharacters);
-    // const containsFavorite = favoriteCharacters.filter((item) => item.id === id);
-
-    // if (containsFavorite.length !== 0) {
-    //   const deleteFavorite = favoriteCharacters.filter((item) => item.id !== id);
-
-    //   return localStorage.setItem('favoriteCharacters', JSON.stringify(deleteFavorite));
-    // }
-    // const includeFavorite = [...favoriteCharacters, { id, uri }]
-
-    // return localStorage.setItem('favoriteCharacters', JSON.stringify(includeFavorite));
-
+    dealWithStorage(favoriteCharacters);
   }
 
   useEffect(() => {

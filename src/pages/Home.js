@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { fetchCharactersOrComics } from '../service';
 import { useHistory } from 'react-router-dom';
 import { Card } from '../components';
+import { isUserLogged } from '../util/exportedFunctions';
+import AppContext from '../context/AppContext';
 import './styles/Home.css';
 
 function Home() {
   const [showCharacters, setShowCharacters] = useState(true);
   const [showComics, setShowComics] = useState(false);
   const [data, setData] = useState([]);
+  const { setEmail, setName } = useContext(AppContext);
   const title = showCharacters ? 'Characters' : 'Comics';
   const history = useHistory();
   const changeToComics = () => {
@@ -31,6 +34,7 @@ function Home() {
 
   useEffect(() => {
     showDatas();
+    isUserLogged(history, setEmail, setName)
   }, [showComics, showCharacters]);
 
   return (

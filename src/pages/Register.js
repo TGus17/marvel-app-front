@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { ButtonComponent, Form } from '../components';
 import AppContext from '../context/AppContext';
-import { verifyEmailAndPassword } from '../util/verifications';
+import { verifyEmailAndPassword } from '../util/exportedFunctions';
 import './styles/Login.css';
 
 function Register() {
