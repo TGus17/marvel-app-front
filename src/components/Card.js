@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './styles/ComicCard.css';
 import { fetchMarvelData } from '../service';
@@ -7,9 +7,6 @@ const Card = ({ data, showCharacters }) => {
   const image = `${data.thumbnail.path}.${data.thumbnail.extension}`;
   const name = showCharacters ? data.name : data.title;
   const uri = data.resourceURI;
-  
-  console.log('data', data);
-  console.log('character', showCharacters);
 
   const clickPicture = async () => {
     const data = await fetchMarvelData(uri);

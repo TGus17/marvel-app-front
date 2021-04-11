@@ -5,10 +5,10 @@ function AppProvider({ children }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [wrongData, setWrongData] = useState(false);
+  const [comebackData, setComebackData] = useState(false);
   const [isDisable, setIsDisable] = useState(true);
-  const [messageOfError, setMessageOfError] = useState('');
-  const [userRegistered, setUserRegistered] = useState(false);
+  const [messageResponse, setMessageResponse] = useState('');
+  // const [deletedUser, setDeletedUser] = useState(false);
 
   const contextValue = {
     name,
@@ -17,14 +17,14 @@ function AppProvider({ children }) {
     setEmail,
     password,
     setPassword,
-    wrongData,
-    setWrongData,
+    comebackData,
+    setComebackData,
     isDisable,
     setIsDisable,
-    messageOfError,
-    setMessageOfError,
-    userRegistered,
-    setUserRegistered,
+    messageResponse,
+    setMessageResponse,
+    // deletedUser,
+    // setDeletedUser,
   }
   return (
     <AppContext.Provider value={ contextValue }>

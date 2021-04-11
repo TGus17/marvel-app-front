@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { verifyEmailAndPassword } from '../util/verifications';
-import { Forms, ButtonComponent } from '../components';
+import { Form, ButtonComponent } from '../components';
 import AppContext from '../context/AppContext';
 import './styles/Login.css';
 
@@ -9,24 +9,21 @@ function Login() {
   const {
     email,
     password,
-    wrongData,
-    setWrongData,
+    comebackData,
+    setComebackData,
     setIsDisable,
-    messageOfError,
-    userRegistered,
-    setUserRegistered,
+    messageResponse,
   } = useContext(AppContext);
   const history = useHistory();
 
   const verifyIfNewUser = () => {
-    if (userRegistered) return setUserRegistered(true);
-    return setUserRegistered(false);
+    if (comebackData) return setComebackData(true);
+    return setComebackData(false);
   }
 
   useEffect(() => {
     setIsDisable(!verifyEmailAndPassword(email, password));
-    setWrongData(false);
-    setUserRegistered(false);
+    setComebackData(false);
   }, [email, password]);
 
   useEffect(() => {
@@ -35,13 +32,14 @@ function Login() {
 
   return (
     <div className="login-container">
-      <Forms />
+      <Form showName={false} />
       <div className="col-auto buttons">
         <ButtonComponent
           body={ { email, password } }
           label='Sign In'
           endpoint='login'
           redirect='home'
+          method="POST"
         />
         <button
           type="button"
@@ -52,8 +50,7 @@ function Login() {
         </button>
       </div>
       <div>
-        { wrongData && messageOfError }
-        { userRegistered && 'User Registered! Please log in.' }
+        { comebackData && messageResponse }
       </div>
     </div>
   );

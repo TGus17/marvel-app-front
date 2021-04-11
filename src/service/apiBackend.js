@@ -1,15 +1,16 @@
 const baseUrl = 'http://localhost:3001';
 
-const options = (body = null) => ({
-  method: 'POST',
+const options = (Authorization, method, body = null) => ({
+  method,
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
+    Authorization,
   },
-  body: JSON.stringify(body),
+  body: body ? JSON.stringify(body) : undefined,
 });
 
-const requestProcess = async (endpoint, body) => await fetch(`${baseUrl}/${endpoint}`, options(body))
+const requestProcess = async (endpoint, Authorization, method, body) => await fetch(`${baseUrl}/${endpoint}`, options(Authorization, method, body))
   .then((response) => response.json())
   .catch((err) => console.log(err.message));
 

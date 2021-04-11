@@ -1,14 +1,50 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import AppContext from '../context/AppContext';
 import '../pages/styles/Login.css';
 
-const Forms = () => {
-  const { setEmail, setPassword } = useContext(AppContext);
+function Form({ showName }) {
+  const {
+    email,
+    setEmail,
+    setPassword,
+    name,
+    setName,
+    messageResponse,
+  } = useContext(AppContext);
+
+  const verifyUserIsDeleted = () => {
+    if (messageResponse === 'User has been deleted.') {
+      setEmail('');
+      setPassword('');
+      setName('');
+      localStorage.removeItem('token');
+    }
+  }
+
+  useEffect(() => {
+    verifyUserIsDeleted();
+  }, []);
 
   return (
     <form
       className="row g-3"
     >
+      {showName && <div className="mb-3">
+        <label
+          htmlFor="email"
+          className="form-label"
+        >
+          Name
+        </label>
+        <input
+          type="text"
+          className="form-control"
+          id="name"
+          placeholder="name"
+          onChange={ (e) => setName(e.target.value) }
+          value={ name }
+        />
+      </div>}
       <div className="mb-3">
         <label
           htmlFor="email"
@@ -22,6 +58,7 @@ const Forms = () => {
           id="email"
           placeholder="name@example.com"
           onChange={ (e) => setEmail(e.target.value) }
+          value={ email }
         />
       </div>
       <div className="mb-3">
@@ -43,4 +80,4 @@ const Forms = () => {
   )
 }
 
-export default Forms
+export default Form
