@@ -3,12 +3,13 @@ import AppContext from '../context/AppContext';
 // import searchMavel from '../service/apiService';
 import { MarvelSearchButton } from '../components';
 
-function SearchBar() {
-  const { showCharacters } = useContext(AppContext);
-  const [inputSearch, setInputSearch] = useState('');
+function SearchBar({ searchCharacter }) {
+  const { showCharacters, setInputSearch } = useContext(AppContext);
+  // const [inputSearch, setInputSearch] = useState('');
   const placeHolder = showCharacters ? 'Type Character' : 'Type Comic';
   const param = showCharacters ? 'characters' : 'comics';
   const name = showCharacters ? 'name' : 'title';
+  console.log(searchCharacter);
 
   return (
     <div>
@@ -21,9 +22,10 @@ function SearchBar() {
         <div>
           <MarvelSearchButton
             label="Search"
-            comicOrCharacter={param}
-            nameOrTitle={name}
-            searchParam={inputSearch}
+            // comicOrCharacter={param}
+            // nameOrTitle={name}
+            // searchParam={inputSearch}
+            searchCharacter={searchCharacter}
           />
         </div>
     </div>

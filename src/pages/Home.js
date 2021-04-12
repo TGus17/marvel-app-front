@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { fetchCharactersOrComics } from '../service';
+import { fetchCharactersOrComics, searchMavel } from '../service';
 import { useHistory } from 'react-router-dom';
 import { Card, SearchBar, LoadingSpinner } from '../components';
 import { isUserLogged } from '../util/exportedFunctions';
@@ -10,7 +10,6 @@ import SearchIcon from '../images/searchIcon.svg';
 import './styles/Home.css';
 
 function Home() {
-  // const [data, setData] = useState([]);
   const [getResponse, setGetResponse] = useState(false);
   const {
     data,
@@ -25,6 +24,7 @@ function Home() {
     setShowSearchBar,
     // copyrightText,
     setCopyrightText,
+    inputSearch,
   } = useContext(AppContext);
   const title = showCharacters ? 'Characters' : 'Comics';
   const history = useHistory();
@@ -51,9 +51,13 @@ function Home() {
     return setGetResponse(true);
   }
 
-  // const toggleSearcBar = () => {
-    
-  // }
+  const searchCharacter = async () => {
+    const comicOrCharacter = showCharacters ? 'characters' : 'comics';
+    const nameOrTitle = showCharacters ? 'name' : 'title';
+    const allData = await searchMavel(comicOrCharacter, nameOrTitle, inputSearch);
+    setData(allData.data.results);
+    console.log(allData.data.results);
+  }
 
   useEffect(() => {
     showDatas();
@@ -93,9 +97,9 @@ function Home() {
         </button>
       </div>
       <div>
-        {showSearchBar && <SearchBar />}
+        {showSearchBar && <SearchBar searchCharacter={ searchCharacter }/>}
       </div>
-      {/* <div className="home-container">
+      <div className="home-container">
         {!getResponse
           ?
           <LoadingSpinner />
@@ -106,7 +110,7 @@ function Home() {
             />
           ))
         }
-      </div> */}
+      </div>
     </div>
   )
 }

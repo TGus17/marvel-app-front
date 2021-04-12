@@ -32,8 +32,8 @@ const fetchMarvelData = async (param) => {
   return allDataParsed;
 }
 
-const searchMavel = async (param, searchParam) => {
-  const url = `http://gateway.marvel.com/v1/public/${param}?name=${searchParam}&ts=${timeStamp}&apikey=${apiKey}&hash=${hash}`;
+const searchMavel = async (comicOrCharacter, nameOrTitle, searchParam) => {
+  const url = `http://gateway.marvel.com/v1/public/${comicOrCharacter}?${nameOrTitle}StartsWith=${searchParam}&ts=${timeStamp}&apikey=${apiKey}&hash=${hash}`;
   console.log(url);
   const allData = await fetch(url);
   const allDataParsed = allData.json();

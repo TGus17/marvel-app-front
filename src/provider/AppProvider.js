@@ -13,6 +13,7 @@ function AppProvider({ children }) {
   const [showComics, setShowComics] = useState(false);
   const [showSearchBar, setShowSearchBar] = useState(false);
   const [copyrightText, setCopyrightText] = useState('');
+  const [inputSearch, setInputSearch] = useState('');
 
   const contextValue = {
     name,
@@ -37,6 +38,8 @@ function AppProvider({ children }) {
     setShowSearchBar,
     copyrightText,
     setCopyrightText,
+    inputSearch,
+    setInputSearch,
   }
   return (
     <AppContext.Provider value={ contextValue }>
