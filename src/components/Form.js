@@ -12,17 +12,20 @@ function Form({ showName }) {
     messageResponse,
   } = useContext(AppContext);
 
-  const verifyUserIsDeleted = () => {
-    if (messageResponse === 'User has been deleted.') {
+  const verifyIfUserIsDeletedOrDisconnected = () => {
+    // A recuperação dessa chave é no caso do usuário ter sido deslogado
+    const token = localStorage.getItem('token');
+    if (messageResponse === 'User has been deleted.' || !token) {
       setEmail('');
       setPassword('');
       setName('');
+      // Esse removeItem é no caso do usuário ter sido deletado
       localStorage.removeItem('token');
     }
   }
 
   useEffect(() => {
-    verifyUserIsDeleted();
+    verifyIfUserIsDeletedOrDisconnected();
   }, []);
 
   return (
