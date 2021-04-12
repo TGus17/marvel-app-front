@@ -10,6 +10,7 @@ function AppProvider({ children }) {
   const [messageResponse, setMessageResponse] = useState('');
   const [showCharacters, setShowCharacters] = useState(true);
   const [showComics, setShowComics] = useState(false);
+  const [showSearchBar, setShowSearchBar] = useState(false);
 
   const contextValue = {
     name,
@@ -28,8 +29,8 @@ function AppProvider({ children }) {
     setShowCharacters,
     showComics,
     setShowComics,
-    // isFavorite,
-    // setIsFavorite,
+    showSearchBar,
+    setShowSearchBar,
   }
   return (
     <AppContext.Provider value={ contextValue }>
