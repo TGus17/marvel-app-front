@@ -4,6 +4,8 @@ import { useHistory } from 'react-router-dom';
 import { Card } from '../components';
 import { isUserLogged } from '../util/exportedFunctions';
 import AppContext from '../context/AppContext';
+import Profile from '../images/profileIcon.svg';
+import WhiteHeart from '../images/whiteHeartIcon.svg';
 import './styles/Home.css';
 
 function Home() {
@@ -54,11 +56,12 @@ function Home() {
       <button
         onClick={ () => history.push('/profile') }
       >
-        Show settings
+        <img src={Profile} alt='Profile' />
       </button>
       <button
         onClick={ () => history.push('/favorites') }
       >
+        <img src={WhiteHeart} alt='Profile' />
         Show favorites
       </button>
       <div className="home-container">

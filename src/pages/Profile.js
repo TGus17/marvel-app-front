@@ -18,6 +18,11 @@ function Profile() {
   } = useContext(AppContext);
   const history = useHistory();
 
+  const clearStorage = () => {
+    localStorage.clear();
+    history.push('/');
+  };
+
   useEffect(() => {
     isUserLogged(history, setEmail, setName);
   }, []);
@@ -40,6 +45,18 @@ function Profile() {
         redirect="/"
         method="DELETE"
       />
+      <button
+        onClick={ ()=> history.push('/home') }
+        className="btn signin-button mb-0"
+      >
+        Cancel
+      </button>
+      <button
+        onClick={ clearStorage }
+        className="btn signin-button mb-0"
+      >
+        Log out
+      </button>
       </div>
       <div>
         { comebackData && messageResponse }
