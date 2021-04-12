@@ -18,7 +18,7 @@ function Favorites() {
             />
           ))
           :
-          <spam>Não há characters favoritos</spam>
+          <spam>There are no Favorite Characters</spam>
       }
       </div>
       <div>
@@ -32,7 +32,7 @@ function Favorites() {
                 />  
             ))
             :
-            <spam>Não há comics favoritos</spam>
+            <spam>There are no Favorite Comics</spam>
         }
       </div>
     </div>
