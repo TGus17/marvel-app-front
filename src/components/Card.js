@@ -1,26 +1,24 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './styles/ComicCard.css';
-import { fetchMarvelData } from '../service';
 
-const Card = ({ data, showCharacters }) => {
+const Card = ({ data }) => {
   const image = `${data.thumbnail.path}.${data.thumbnail.extension}`;
-  const name = showCharacters ? data.name : data.title;
   const uri = data.resourceURI;
-
-  const clickPicture = async () => {
-    const data = await fetchMarvelData(uri);
-    console.log(data);
-  }
+  console.log('dataCard', data);
 
   return (
-    <div
-      className="card-container"
-      onClick={ clickPicture }
+    <Link
+      to={ { pathname:`/details/${data.id}`, state: { uri, data } } }
     >
-      <img src={image} alt={name} className="card-container"/>
-      <p className="title">{name}</p>
-    </div>
+      <div
+        className="card-container"
+      >
+        <img src={image} alt={ data.name ? data.name : data.title } className="card-container"/>
+        <p className="title">{ data.name ? data.name : data.title }</p>
+      </div>
+    </Link>
   )
 }
 

@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { fetchCharactersOrComics } from '../service';
 import { useHistory } from 'react-router-dom';
 import { Card } from '../components';
+import { isUserLogged } from '../util/exportedFunctions';
+import AppContext from '../context/AppContext';
 import './styles/Home.css';
 
 function Home() {
-  const [showCharacters, setShowCharacters] = useState(true);
-  const [showComics, setShowComics] = useState(false);
   const [data, setData] = useState([]);
+  const { setEmail, setName, showCharacters, setShowCharacters, showComics, setShowComics } = useContext(AppContext);
   const title = showCharacters ? 'Characters' : 'Comics';
   const history = useHistory();
   const changeToComics = () => {
@@ -26,11 +27,13 @@ function Home() {
       await fetchCharactersOrComics('characters') :
       await fetchCharactersOrComics('comics')
     );
+    // console.log(allData.data.results);
     return setData(allData.data.results);
   }
 
   useEffect(() => {
     showDatas();
+    isUserLogged(history, setEmail, setName)
   }, [showComics, showCharacters]);
 
   return (
@@ -53,11 +56,15 @@ function Home() {
       >
         Show settings
       </button>
+      <button
+        onClick={ () => history.push('/favorites') }
+      >
+        Show favorites
+      </button>
       <div className="home-container">
         {data.map((data) => (
           <Card
             data={data}
-            showCharacters={showCharacters}
           />
           ))
         }

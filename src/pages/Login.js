@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import { verifyEmailAndPassword } from '../util/verifications';
+import { verifyEmailAndPassword } from '../util/exportedFunctions';
 import { Form, ButtonComponent } from '../components';
 import AppContext from '../context/AppContext';
 import './styles/Login.css';

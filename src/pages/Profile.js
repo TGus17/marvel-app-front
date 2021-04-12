@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import { verifyUser } from '../util/verifications';
+import { isUserLogged } from '../util/exportedFunctions';
 import { Form, ButtonComponent } from '../components';
 import AppContext from '../context/AppContext';
 import './styles/Login.css';
@@ -18,18 +18,8 @@ function Profile() {
   } = useContext(AppContext);
   const history = useHistory();
 
-  const setUser = (user) => {
-    setEmail(user.email);
-    setName(user.name);
-  }
-  const isUserLogged = async () => {
-    const token = JSON.parse(localStorage.getItem('token'));
-    if (!token) return history.push('/');
-    verifyUser(token, history, setUser);
-  }
-
   useEffect(() => {
-    isUserLogged();
+    isUserLogged(history, setEmail, setName);
   }, []);
 
   return (
