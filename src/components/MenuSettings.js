@@ -5,7 +5,6 @@ import {MenuButton} from './';
 
 function MenuSettings() {
   const {
-    // showCharacters,
     setShowComics,
     setShowCharacters,
     setGetResponse,
@@ -24,7 +23,7 @@ function MenuSettings() {
     setShowComics(false);
     setShowCharacters(true);
   }
-  // const title = showCharacters ? 'Characters' : 'Comics';
+
   return (
     <div>
       <MenuButton
