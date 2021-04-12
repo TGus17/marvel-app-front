@@ -14,6 +14,7 @@ function AppProvider({ children }) {
   const [showSearchBar, setShowSearchBar] = useState(false);
   const [copyrightText, setCopyrightText] = useState('');
   const [inputSearch, setInputSearch] = useState('');
+  const [getResponse, setGetResponse] = useState(false);
 
   const contextValue = {
     name,
@@ -40,6 +41,8 @@ function AppProvider({ children }) {
     setCopyrightText,
     inputSearch,
     setInputSearch,
+    getResponse,
+    setGetResponse,
   }
   return (
     <AppContext.Provider value={ contextValue }>

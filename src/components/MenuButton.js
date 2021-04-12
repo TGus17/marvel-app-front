@@ -1,16 +1,15 @@
 import React from 'react';
 
-function MarvelSearchButton({ searchCharacter, label }) {
-
+function MenuButton({ onClick, label }) {
   return (
     <button
       type="button"
       className="btn signin-button mb-0"
-      onClick={ searchCharacter }
+      onClick={ onClick }
     >
       { label }
     </button>
   )
 }
 
-export default MarvelSearchButton;
+export default MenuButton;

@@ -12,8 +12,6 @@ function Details(props) {
   const [isFavorite, setIsFavorite] = useState(false);
   const { location: { state: { data } }, match: { params: { id } } } = props;
   const { resourceURI } = data;
-  console.log('data', data);
-  console.log('marvelData', marvelData);
 
   const fetchData = async () => {
     const { data: { results: [fetchedResult] } } = await fetchMarvelData(resourceURI);

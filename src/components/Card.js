@@ -3,10 +3,9 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './styles/ComicCard.css';
 
-const Card = ({ data }) => {
+function Card ({ data }) {
   const image = `${data.thumbnail.path}.${data.thumbnail.extension}`;
   const uri = data.resourceURI;
-  // console.log('dataCard', data);
 
   return (
     <Link

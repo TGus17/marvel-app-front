@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { verifyEmailAndPassword } from '../util/exportedFunctions';
-import { Form, ButtonComponent } from '../components';
+import { Form, ButtonComponent, MenuButton } from '../components';
 import AppContext from '../context/AppContext';
 import './styles/Login.css';
 
@@ -41,13 +41,10 @@ function Login() {
           redirect='home'
           method="POST"
         />
-        <button
-          type="button"
-          className="btn mb-0 register-button"
+        <MenuButton
           onClick={ () => history.push('/register') }
-        >
-          Register
-        </button>
+          label="Register"
+        />
       </div>
       <div>
         { comebackData && messageResponse }

@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { isUserLogged } from '../util/exportedFunctions';
-import { Form, ButtonComponent } from '../components';
+import { Form, ButtonComponent, MenuButton } from '../components';
 import AppContext from '../context/AppContext';
 import './styles/Login.css';
 
@@ -45,18 +45,14 @@ function Profile() {
         redirect="/"
         method="DELETE"
       />
-      <button
+      <MenuButton
         onClick={ ()=> history.push('/home') }
-        className="btn signin-button mb-0"
-      >
-        Cancel
-      </button>
-      <button
+        label="Cancel"
+      />
+      <MenuButton
         onClick={ clearStorage }
-        className="btn signin-button mb-0"
-      >
-        Log out
-      </button>
+        label="Log out"
+      />
       </div>
       <div>
         { comebackData && messageResponse }
