@@ -19,15 +19,13 @@ function SearchBar({ searchCharacter }) {
           placeholder={ placeHolder }
           onChange={ (e) => setInputSearch(e.target.value) }
         />
-        <div>
-          <MarvelSearchButton
-            label="Search"
-            // comicOrCharacter={param}
-            // nameOrTitle={name}
-            // searchParam={inputSearch}
-            searchCharacter={searchCharacter}
-          />
-        </div>
+        <MarvelSearchButton
+          label="Search"
+          // comicOrCharacter={param}
+          // nameOrTitle={name}
+          // searchParam={inputSearch}
+          searchCharacter={searchCharacter}
+        />
     </div>
     </div>
   )

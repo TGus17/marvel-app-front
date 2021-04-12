@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { fetchCharactersOrComics, searchMavel } from '../service';
 import { useHistory } from 'react-router-dom';
-import { Card, SearchBar, LoadingSpinner } from '../components';
+import { Card, SearchBar, LoadingSpinner, MenuSettings } from '../components';
 import { isUserLogged } from '../util/exportedFunctions';
 import AppContext from '../context/AppContext';
 import Profile from '../images/profileIcon.svg';
@@ -10,7 +10,7 @@ import SearchIcon from '../images/searchIcon.svg';
 import './styles/Home.css';
 
 function Home() {
-  const [getResponse, setGetResponse] = useState(false);
+  // const [getResponse, setGetResponse] = useState(false);
   const {
     data,
     setData,
@@ -25,6 +25,8 @@ function Home() {
     // copyrightText,
     setCopyrightText,
     inputSearch,
+    getResponse,
+    setGetResponse,
   } = useContext(AppContext);
   const title = showCharacters ? 'Characters' : 'Comics';
   const history = useHistory();
@@ -66,38 +68,12 @@ function Home() {
 
   return (
     <div>
-      <div>
-        <h2>{title}</h2>
-      </div>
-      <button
-        onClick={ changeToComics }
-      >
-        Show Comics
-      </button>
-      <button
-        onClick={ changeToCharacters }
-      >
-        Show Characters
-      </button>
-      <button
-        onClick={ () => history.push('/profile') }
-      >
-        <img src={ Profile } alt='Profile' />
-      </button>
-      <button
-        onClick={ () => history.push('/favorites') }
-      >
-        <img src={ WhiteHeart } alt='Profile' />
-        Show favorites
-      </button>
-      <div>
-        <button
-          onClick={ () => setShowSearchBar(!showSearchBar) }>
-          <img src={ SearchIcon } alt='search' />
-        </button>
-      </div>
+      <MenuSettings />
       <div>
         {showSearchBar && <SearchBar searchCharacter={ searchCharacter }/>}
+      </div>
+      <div>
+        <h2>{title}</h2>
       </div>
       <div className="home-container">
         {!getResponse
