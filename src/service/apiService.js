@@ -11,6 +11,13 @@ const apiKey = REACT_APP_PUBLIC_KEY || '68f698fee41b2eced262533902aeccbe';
 
 const hash = md5(`${timeStamp}${privateKey}${apiKey}`);
 
+const urlBack = (isSearch, param, name, searchParam) => {
+  if (isSearch) {
+    return `http://gateway.marvel.com/v1/public/${param}?${name}StartsWith=${searchParam}?ts=${timeStamp}&apikey=${apiKey}&hash=${hash}&limit=10`;
+  }
+  return `http://gateway.marvel.com/v1/public/${param}?ts=${timeStamp}&apikey=${apiKey}&hash=${hash}&limit=10`;
+}
+
 const fetchCharactersOrComics = async (param) => {
   const url = `http://gateway.marvel.com/v1/public/${param}?ts=${timeStamp}&apikey=${apiKey}&hash=${hash}&limit=10`;
   const allData = await fetch(url);
@@ -25,7 +32,18 @@ const fetchMarvelData = async (param) => {
   return allDataParsed;
 }
 
+const searchMavel = async (comicOrCharacter, nameOrTitle, searchParam) => {
+  const url = `http://gateway.marvel.com/v1/public/${comicOrCharacter}?${nameOrTitle}StartsWith=${searchParam}&ts=${timeStamp}&apikey=${apiKey}&hash=${hash}`;
+  console.log(url);
+  const allData = await fetch(url);
+  const allDataParsed = allData.json();
+  return allDataParsed;
+}
+
+// https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=spider&apikey=68f698fee41b2eced262533902aeccbe
+
 export {
   fetchCharactersOrComics,
   fetchMarvelData,
+  searchMavel,
 };

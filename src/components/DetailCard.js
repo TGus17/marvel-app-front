@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { fetchMarvelData } from '../service/apiService';
-import {Card} from '../components';
+import { Card, LoadingSpinner } from '../components';
 
 function DetailCard({item}) {
   const [datas, setDatas] = useState({});
@@ -19,7 +19,11 @@ function DetailCard({item}) {
 
   return (
     <div>
-      {downloaded && datas.map((item) => (
+      {!downloaded
+        ?
+        <LoadingSpinner />
+        :
+        datas.map((item) => (
         <Card
           data={item}
         />

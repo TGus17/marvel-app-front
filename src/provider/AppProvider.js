@@ -5,11 +5,15 @@ function AppProvider({ children }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [data, setData] = useState([]);
   const [comebackData, setComebackData] = useState(false);
   const [isDisable, setIsDisable] = useState(true);
   const [messageResponse, setMessageResponse] = useState('');
   const [showCharacters, setShowCharacters] = useState(true);
   const [showComics, setShowComics] = useState(false);
+  const [showSearchBar, setShowSearchBar] = useState(false);
+  const [copyrightText, setCopyrightText] = useState('');
+  const [inputSearch, setInputSearch] = useState('');
 
   const contextValue = {
     name,
@@ -18,6 +22,8 @@ function AppProvider({ children }) {
     setEmail,
     password,
     setPassword,
+    data,
+    setData,
     comebackData,
     setComebackData,
     isDisable,
@@ -28,8 +34,12 @@ function AppProvider({ children }) {
     setShowCharacters,
     showComics,
     setShowComics,
-    // isFavorite,
-    // setIsFavorite,
+    showSearchBar,
+    setShowSearchBar,
+    copyrightText,
+    setCopyrightText,
+    inputSearch,
+    setInputSearch,
   }
   return (
     <AppContext.Provider value={ contextValue }>

@@ -1,22 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { fetchMarvelData } from '../service';
-import { DetailCard } from '../components';
+import { DetailCard, LoadingSpinner } from '../components';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import whiteHeart from '../images/whiteHeartIcon.svg';
+import AppContext from '../context/AppContext';
 
 function Details(props) {
+  const { copyrightText } = useContext(AppContext);
   const [marvelData, setMarvelData] = useState({});
   const [downloaded, setDownloaded] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
   const { location: { state: { data } }, match: { params: { id } } } = props;
   const { resourceURI } = data;
-
-  
+  console.log('data', data);
+  console.log('marvelData', marvelData);
 
   const fetchData = async () => {
     const { data: { results: [fetchedResult] } } = await fetchMarvelData(resourceURI);
     setMarvelData(fetchedResult);
-    // setDownloaded funcionou para não quebrar a renderização
     setDownloaded(true);
   };
 
@@ -65,29 +66,40 @@ function Details(props) {
         </button>
       </div>
       <div>
-        <h1>{data.name ? marvelData.name : marvelData.title}</h1>
-        <p>{marvelData.description}</p>
-        {/* const downloaded é para renderizar apenas se a resposta da api já tiver retornado */}
-        {downloaded &&
-          <img src={`${marvelData.thumbnail.path}.${marvelData.thumbnail.extension}`} alt={marvelData.name}/>}
+        <h1>{ data.name ? marvelData.name : marvelData.title }</h1>
+        <p>{ marvelData.description }</p>
       </div>
       <div>
-        <h3>{data.name ? 'Related Comics' : 'Related Characters'}</h3>
-        {
-          data.name
-            ?
-            data.comics.items.map((item) => (
-              <DetailCard
-                item={item}
-              />
-            ))
-            :
-            data.characters.items.map((item) => (
-              <DetailCard
-                item={item}
-              />
-            ))
-        }
+        {!downloaded
+          ?
+          <LoadingSpinner />
+          :
+          (
+          <div>
+            <div>
+              <img src={`${marvelData.thumbnail.path}.${marvelData.thumbnail.extension}`} alt={marvelData.name}/>
+              <p className="copyright">{copyrightText}</p>
+            </div>
+            <div>
+              <h3>{data.name ? 'Related Comics' : 'Related Characters'}</h3>
+              {
+                data.name
+                  ?
+                  data.comics.items.map((item) => (
+                    <DetailCard
+                      item={item}
+                    />
+                  ))
+                  :
+                  data.characters.items.map((item) => (
+                    <DetailCard
+                      item={item}
+                    />
+                  ))
+              }
+            </div>
+          </div>
+          )}
       </div>
     </div>
   );
