@@ -1,28 +1,16 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { fetchMarvelData } from '../service';
-// import AppContext from '../context/AppContext';
 import { DetailCard } from '../components';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import whiteHeart from '../images/whiteHeartIcon.svg';
 
 function Details(props) {
-  // const { showCharacters } = useContext(AppContext);
   const [marvelData, setMarvelData] = useState({});
   const [downloaded, setDownloaded] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
   const { location: { state: { data } }, match: { params: { id } } } = props;
-  // const uri = data.resourceURI;
   const { resourceURI } = data;
-  // const literalName = data.name ? 'comics' : 'characters';
-  // const literalTitle = data.name ? 'title' : 'name';
-  // const variable = `${data[literalName].items}`;
-  // console.log('variavel1', data.characters.items);
-  // console.log('variavel2', JSON.stringify(variable));
-  // console.log('name', literalName);
-  // console.log('title', literalTitle);
-  // const print = `${data}`;
-  // console.log('state.data', `${data[literalName].items[0][literalTitle]}`);
-  // console.log('state.data', data.comics.items[0], literal);
+
   
 
   const fetchData = async () => {
@@ -67,7 +55,7 @@ function Details(props) {
   useEffect(() => {
     fetchData();
     checkFavorites();
-  }, []);
+  }, [id]);
 
   return (
     <div>
@@ -92,21 +80,14 @@ function Details(props) {
               <DetailCard
                 item={item}
               />
-              // <h4>{item.name}</h4>
             ))
             :
             data.characters.items.map((item) => (
               <DetailCard
                 item={item}
               />
-              // <h4>{item.name}</h4>
             ))
         }
-        {/* {variable.map((item) => (
-          <div>
-          </div>
-        ))} */}
-        {/* <h4>{`${data[literalName].items[0][literalTitle]}`}</h4> */}
       </div>
     </div>
   );
