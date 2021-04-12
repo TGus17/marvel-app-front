@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { fetchMarvelData } from '../service';
-import { DetailCard } from '../components';
+import { DetailCard, LoadingSpinner } from '../components';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import whiteHeart from '../images/whiteHeartIcon.svg';
 
@@ -68,26 +68,37 @@ function Details(props) {
         <h1>{data.name ? marvelData.name : marvelData.title}</h1>
         <p>{marvelData.description}</p>
         {/* const downloaded é para renderizar apenas se a resposta da api já tiver retornado */}
-        {downloaded &&
-          <img src={`${marvelData.thumbnail.path}.${marvelData.thumbnail.extension}`} alt={marvelData.name}/>}
       </div>
       <div>
-        <h3>{data.name ? 'Related Comics' : 'Related Characters'}</h3>
-        {
-          data.name
-            ?
-            data.comics.items.map((item) => (
-              <DetailCard
-                item={item}
-              />
-            ))
-            :
-            data.characters.items.map((item) => (
-              <DetailCard
-                item={item}
-              />
-            ))
-        }
+        {!downloaded
+          ?
+          <LoadingSpinner />
+          :
+          (
+          <div>
+            <div>
+              <img src={`${marvelData.thumbnail.path}.${marvelData.thumbnail.extension}`} alt={marvelData.name}/>
+            </div>
+            <div>
+              <h3>{data.name ? 'Related Comics' : 'Related Characters'}</h3>
+              {
+                data.name
+                  ?
+                  data.comics.items.map((item) => (
+                    <DetailCard
+                      item={item}
+                    />
+                  ))
+                  :
+                  data.characters.items.map((item) => (
+                    <DetailCard
+                      item={item}
+                    />
+                  ))
+              }
+            </div>
+          </div>
+          )}
       </div>
     </div>
   );
