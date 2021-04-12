@@ -6,6 +6,7 @@ import SearchBar from './SearchBar';
 import LoadingSpinner from './LoadingSpinner';
 import MarvelSearchButton from './MarvelButton';
 import MenuSettings from './MenuSettings';
+import MenuButton from './MenuButton';
  
 export {
   Form,
@@ -16,4 +17,5 @@ export {
   LoadingSpinner,
   MarvelSearchButton,
   MenuSettings,
+  MenuButton,
 };

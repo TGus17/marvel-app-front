@@ -4,9 +4,9 @@ import { useHistory } from 'react-router-dom';
 import { Card, SearchBar, LoadingSpinner, MenuSettings } from '../components';
 import { isUserLogged } from '../util/exportedFunctions';
 import AppContext from '../context/AppContext';
-import Profile from '../images/profileIcon.svg';
-import WhiteHeart from '../images/whiteHeartIcon.svg';
-import SearchIcon from '../images/searchIcon.svg';
+// import Profile from '../images/profileIcon.svg';
+// import WhiteHeart from '../images/whiteHeartIcon.svg';
+// import SearchIcon from '../images/searchIcon.svg';
 import './styles/Home.css';
 
 function Home() {
@@ -17,11 +17,11 @@ function Home() {
     setEmail,
     setName,
     showCharacters,
-    setShowCharacters,
+    // setShowCharacters,
     showComics,
-    setShowComics,
+    // setShowComics,
     showSearchBar,
-    setShowSearchBar,
+    // setShowSearchBar,
     // copyrightText,
     setCopyrightText,
     inputSearch,
@@ -30,17 +30,17 @@ function Home() {
   } = useContext(AppContext);
   const title = showCharacters ? 'Characters' : 'Comics';
   const history = useHistory();
-  const changeToComics = () => {
-    setGetResponse(false);
-    setShowCharacters(false);
-    setShowComics(true);
-  }
+  // const changeToComics = () => {
+  //   setGetResponse(false);
+  //   setShowCharacters(false);
+  //   setShowComics(true);
+  // }
 
-  const changeToCharacters = () => {
-    setGetResponse(false);
-    setShowComics(false);
-    setShowCharacters(true);
-  }
+  // const changeToCharacters = () => {
+  //   setGetResponse(false);
+  //   setShowComics(false);
+  //   setShowCharacters(true);
+  // }
 
   const showDatas = async () => {
     const allData = (

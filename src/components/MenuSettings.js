@@ -1,9 +1,7 @@
 import React, { useContext } from 'react';
 import AppContext from '../context/AppContext';
 import { useHistory } from 'react-router-dom';
-import Profile from '../images/profileIcon.svg';
-import WhiteHeart from '../images/whiteHeartIcon.svg';
-import SearchIcon from '../images/searchIcon.svg';
+import {MenuButton} from './';
 
 function MenuSettings() {
   const {
@@ -29,36 +27,26 @@ function MenuSettings() {
   // const title = showCharacters ? 'Characters' : 'Comics';
   return (
     <div>
-      <button
+      <MenuButton
         onClick={ changeToComics }
-        className="btn signin-button mb-0"
-      >
-        Comics
-      </button>
-      <button
+        label="Comics"
+      />
+      <MenuButton
         onClick={ changeToCharacters }
-        className="btn signin-button mb-0"
-      >
-        Characters
-      </button>
-      <button
+        label="Characters"
+      />
+      <MenuButton
         onClick={ () => history.push('/profile') }
-        className="btn signin-button mb-0"
-      >
-        Profile
-      </button>
-      <button
+        label="Profile"
+      />
+      <MenuButton
         onClick={ () => history.push('/favorites') }
-        className="btn signin-button mb-0"
-      >
-        Favorites
-      </button>
-      <button
+        label="Favorites"
+      />
+      <MenuButton
         onClick={ () => setShowSearchBar(!showSearchBar) }
-        className="btn signin-button mb-0"
-      >
-        Search
-      </button>
+        label="Search"
+      />
     </div>
   )
 }

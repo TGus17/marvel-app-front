@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import AppContext from '../context/AppContext';
 // import searchMavel from '../service/apiService';
 import { MarvelSearchButton } from '../components';
@@ -7,8 +7,8 @@ function SearchBar({ searchCharacter }) {
   const { showCharacters, setInputSearch } = useContext(AppContext);
   // const [inputSearch, setInputSearch] = useState('');
   const placeHolder = showCharacters ? 'Type Character' : 'Type Comic';
-  const param = showCharacters ? 'characters' : 'comics';
-  const name = showCharacters ? 'name' : 'title';
+  // const param = showCharacters ? 'characters' : 'comics';
+  // const name = showCharacters ? 'name' : 'title';
   console.log(searchCharacter);
 
   return (

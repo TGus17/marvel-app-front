@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { DetailCard } from '../components';
+import { DetailCard, MenuButton } from '../components';
 
 function Favorites() {
   const favoriteCharacters = JSON.parse(localStorage.getItem('favoriteCharacters'));
@@ -38,13 +38,10 @@ function Favorites() {
         }
       </div>
       <div>
-        <button
-          type="button"
-          className="btn signin-button mb-0"
+        <MenuButton
           onClick={ () => history.push('/home') }
-        >
-          Back to Home
-        </button>
+          label="Back to Home"
+        />
       </div>
     </div>
   )
