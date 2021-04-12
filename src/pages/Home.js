@@ -10,9 +10,11 @@ import SearchIcon from '../images/searchIcon.svg';
 import './styles/Home.css';
 
 function Home() {
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
   const [getResponse, setGetResponse] = useState(false);
   const {
+    data,
+    setData,
     setEmail,
     setName,
     showCharacters,
@@ -21,6 +23,8 @@ function Home() {
     setShowComics,
     showSearchBar,
     setShowSearchBar,
+    // copyrightText,
+    setCopyrightText,
   } = useContext(AppContext);
   const title = showCharacters ? 'Characters' : 'Comics';
   const history = useHistory();
@@ -43,12 +47,13 @@ function Home() {
       await fetchCharactersOrComics('comics')
     );
     setData(allData.data.results);
+    setCopyrightText(allData.attributionText);
     return setGetResponse(true);
   }
 
-  const toggleSearcBar = () => {
+  // const toggleSearcBar = () => {
     
-  }
+  // }
 
   useEffect(() => {
     showDatas();
@@ -90,7 +95,7 @@ function Home() {
       <div>
         {showSearchBar && <SearchBar />}
       </div>
-      <div className="home-container">
+      {/* <div className="home-container">
         {!getResponse
           ?
           <LoadingSpinner />
@@ -101,7 +106,7 @@ function Home() {
             />
           ))
         }
-      </div>
+      </div> */}
     </div>
   )
 }

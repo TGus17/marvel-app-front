@@ -6,7 +6,7 @@ import './styles/ComicCard.css';
 const Card = ({ data }) => {
   const image = `${data.thumbnail.path}.${data.thumbnail.extension}`;
   const uri = data.resourceURI;
-  console.log('dataCard', data);
+  // console.log('dataCard', data);
 
   return (
     <Link
