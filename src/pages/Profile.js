@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom';
 import { isUserLogged } from '../util/exportedFunctions';
 import { Form, ButtonComponent, MenuButton } from '../components';
 import AppContext from '../context/AppContext';
-import hulk from '../images/icons/hulk.svg';
 import './styles/Login.css';
 import './styles/Profile.css';
 
@@ -18,6 +17,7 @@ function Profile() {
     comebackData,
     messageResponse,
     clearStorage,
+    randomIconPage,
   } = useContext(AppContext);
   const history = useHistory();
 
@@ -28,7 +28,7 @@ function Profile() {
   return (
     <div className="login profile">
       <img
-        src={ hulk }
+        src={ randomIconPage() }
         className="image-user"
         width="100"
         height="100"

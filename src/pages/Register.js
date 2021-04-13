@@ -3,7 +3,6 @@ import { ButtonComponent, Form, MenuButton } from '../components';
 import AppContext from '../context/AppContext';
 import { verifyEmailAndPassword } from '../util/exportedFunctions';
 import { useHistory } from 'react-router-dom';
-import ironMan from '../images/icons/ironMan.svg';
 import './styles/Login.css';
 import './styles/Register.css';
 
@@ -16,6 +15,7 @@ function Register() {
     setIsDisable,
     setComebackData,
     messageResponse,
+    randomIconPage,
   } = useContext(AppContext);
   const history = useHistory();
 
@@ -32,7 +32,7 @@ function Register() {
   return (
     <div className="login register">
       <img
-        src={ ironMan }
+        src={ randomIconPage() }
         className="image-user"
         width="100"
         height="100"
