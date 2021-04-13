@@ -56,7 +56,7 @@ function Profile() {
         label="Cancel"
       />
       <MenuButton
-        onClick={ clearStorage }
+        onClick={ () => clearStorage(history) }
         label="Log out"
       />
       </div>

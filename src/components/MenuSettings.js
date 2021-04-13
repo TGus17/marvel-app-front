@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import AppContext from '../context/AppContext';
 import { useHistory } from 'react-router-dom';
 import { MenuButton } from './';
+import './styles/MenuSettings.css';
 
 function MenuSettings() {
   const {
@@ -25,27 +26,29 @@ function MenuSettings() {
   }
 
   return (
-    <div>
-      <MenuButton
-        onClick={ changeToComics }
-        label="Comics"
-      />
-      <MenuButton
-        onClick={ changeToCharacters }
-        label="Characters"
-      />
-      <MenuButton
-        onClick={ () => history.push('/profile') }
-        label="Profile"
-      />
-      <MenuButton
-        onClick={ () => history.push('/favorites') }
-        label="Favorites"
-      />
-      <MenuButton
-        onClick={ () => setShowSearchBar(!showSearchBar) }
-        label="Search"
-      />
+    <div className="menu-container">
+      <div className="nav">
+        <MenuButton
+          onClick={ changeToComics }
+          label="Comics"
+        />
+        <MenuButton
+          onClick={ changeToCharacters }
+          label="Characters"
+        />
+        <MenuButton
+          onClick={ () => history.push('/profile') }
+          label="Profile"
+        />
+        <MenuButton
+          onClick={ () => history.push('/favorites') }
+          label="Favorites"
+        />
+        <MenuButton
+          onClick={ () => setShowSearchBar(!showSearchBar) }
+          label="Search"
+        />
+      </div>
     </div>
   )
 }
