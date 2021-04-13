@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
 import {
   artMan,
@@ -27,7 +26,6 @@ function AppProvider({ children }) {
   const [copyrightText, setCopyrightText] = useState('');
   const [inputSearch, setInputSearch] = useState('');
   const [getResponse, setGetResponse] = useState(false);
-  const history = useHistory();
 
   const eraseDataFromState = () => {
     setEmail('');
@@ -35,7 +33,7 @@ function AppProvider({ children }) {
     setName('');
   };
 
-  const clearStorage = () => {
+  const clearStorage = (history) => {
     localStorage.clear();
     history.push('/');
   };
