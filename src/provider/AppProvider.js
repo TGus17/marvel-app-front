@@ -1,5 +1,17 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
+import {
+  artMan,
+  captainAmerica,
+  captainMarvel,
+  deadPool,
+  hulk,
+  ironMan,
+  spiderMan,
+  thor,
+  wolverine,
+} from '../images/icons';
 
 function AppProvider({ children }) {
   const [name, setName] = useState('');
@@ -15,12 +27,34 @@ function AppProvider({ children }) {
   const [copyrightText, setCopyrightText] = useState('');
   const [inputSearch, setInputSearch] = useState('');
   const [getResponse, setGetResponse] = useState(false);
+  const history = useHistory();
 
   const eraseDataFromState = () => {
     setEmail('');
     setPassword('');
     setName('');
+  };
+
+  const clearStorage = () => {
+    localStorage.clear();
+    history.push('/');
+  };
+
+  const randomIconPage = () => {
+    const arrayIcons = [
+      artMan,
+      captainAmerica,
+      captainMarvel,
+      deadPool,
+      hulk,
+      ironMan,
+      spiderMan,
+      thor,
+      wolverine,
+    ];
+    return arrayIcons[Math.floor(Math.random() * (arrayIcons.length))];
   }
+
   const contextValue = {
     name,
     setName,
@@ -49,6 +83,8 @@ function AppProvider({ children }) {
     getResponse,
     setGetResponse,
     eraseDataFromState,
+    clearStorage,
+    randomIconPage,
   }
   return (
     <AppContext.Provider value={ contextValue }>

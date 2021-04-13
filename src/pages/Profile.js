@@ -4,6 +4,7 @@ import { isUserLogged } from '../util/exportedFunctions';
 import { Form, ButtonComponent, MenuButton } from '../components';
 import AppContext from '../context/AppContext';
 import './styles/Login.css';
+import './styles/Profile.css';
 
 
 function Profile() {
@@ -15,20 +16,25 @@ function Profile() {
     setName,
     comebackData,
     messageResponse,
+    clearStorage,
+    randomIconPage,
   } = useContext(AppContext);
   const history = useHistory();
-
-  const clearStorage = () => {
-    localStorage.clear();
-    history.push('/');
-  };
 
   useEffect(() => {
     isUserLogged(history, setEmail, setName);
   }, []);
 
   return (
-    <div className="login-container">
+    <div className="login profile">
+      <img
+        src={ randomIconPage() }
+        className="image-user"
+        width="100"
+        height="100"
+        alt="login"
+      />
+      <h1>Profile</h1>
       <Form showName={true} />
       <div>
       <ButtonComponent

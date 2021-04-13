@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom';
 import { verifyEmailAndPassword } from '../util/exportedFunctions';
 import { Form, ButtonComponent, MenuButton } from '../components';
 import AppContext from '../context/AppContext';
-import spiderMan from '../images/spider-man.svg';
 import './styles/Login.css';
 
 function Login() {
@@ -14,6 +13,7 @@ function Login() {
     setComebackData,
     setIsDisable,
     messageResponse,
+    randomIconPage,
   } = useContext(AppContext);
   const history = useHistory();
 
@@ -25,16 +25,13 @@ function Login() {
   useEffect(() => {
     setIsDisable(!verifyEmailAndPassword(email, password));
     setComebackData(false);
-  }, [email, password]);
-
-  useEffect(() => {
     verifyIfNewUser();
-  }, []);
+  }, [email, password]);
 
   return (
     <div className="login">
       <img
-        src={ spiderMan }
+        src={ randomIconPage() }
         className="image-user"
         width="100"
         height="100"
