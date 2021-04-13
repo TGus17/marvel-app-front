@@ -29,19 +29,15 @@ function Form({ showName }) {
   }, []);
 
   return (
-    <form
-      className="row g-3"
-    >
+    <form>
       {showName && <div className="mb-3">
         <label
           htmlFor="email"
-          className="form-label"
         >
           Name
         </label>
         <input
           type="text"
-          className="form-control"
           id="name"
           placeholder="name"
           onChange={ (e) => setName(e.target.value) }
@@ -51,13 +47,11 @@ function Form({ showName }) {
       <div className="mb-3">
         <label
           htmlFor="email"
-          className="form-label"
         >
           Email address
         </label>
         <input
           type="email"
-          className="form-control"
           id="email"
           placeholder="name@example.com"
           onChange={ (e) => setEmail(e.target.value) }
@@ -67,13 +61,11 @@ function Form({ showName }) {
       <div className="mb-3">
         <label
           htmlFor="password"
-          className="form-label"
         >
           Password
         </label>
         <input
           type="password"
-          className="form-control"
           id="password"
           placeholder="Password with at least 6 characters"
           onChange={ (e) => setPassword(e.target.value) }

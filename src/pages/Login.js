@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { verifyEmailAndPassword } from '../util/exportedFunctions';
 import { Form, ButtonComponent, MenuButton } from '../components';
 import AppContext from '../context/AppContext';
+import spiderMan from '../images/spider-man.svg';
 import './styles/Login.css';
 
 function Login() {
@@ -31,23 +32,29 @@ function Login() {
   }, []);
 
   return (
-    <div className="login-container">
+    <div className="login">
+      <img
+        src={ spiderMan }
+        className="image-user"
+        width="100"
+        height="100"
+        alt="login"
+      />
+      <h1>Login</h1>
       <Form showName={false} />
-      <div className="col-auto buttons">
-        <ButtonComponent
-          body={ { email, password } }
-          label='Sign In'
-          endpoint='login'
-          redirect='home'
-          method="POST"
+      <ButtonComponent
+        body={ { email, password } }
+        label='Sign In'
+        endpoint='login'
+        redirect='home'
+        method="POST"
+      />
+      <MenuButton
+        onClick={ () => history.push('/register') }
+        label="Register"
         />
-        <MenuButton
-          onClick={ () => history.push('/register') }
-          label="Register"
-        />
-      </div>
       <div>
-        { comebackData && messageResponse }
+        { comebackData && <p>{ messageResponse }</p> }
       </div>
     </div>
   );

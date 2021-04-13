@@ -1,21 +1,82 @@
-.login-container {
-  margin: 1% 2%;
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('https://images.unsplash.com/photo-1570385253185-75d46e6cc2c6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80');
+  background-size: cover;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
-.register-button {
-  background-color: olivedrab;
+.login {
+  width: 320px;
+  height: 480px;
+  border: 2px solid #000;
+  border-radius: 80px 0 80px 0;
+  color: #fff;
+  background-color: rgba(0, 0, 5, 0.8);
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  padding: 68px 28px;
+}
+
+.image-user {
+  border-radius: 50%;
+  position: absolute;
+  top: -50px;
+  left: 112px;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+  padding-left: 0;
+  padding-bottom: 20px;
+  letter-spacing: 20px;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 25px;
+}
+
+.login label {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+}
+
+.login input {
+  width: 100%;
+  margin-bottom: 21px;
+  border: none;
+  border-bottom: 1px solid white;
+  background: transparent;
+  outline: none;
+  height: 40px;
   color: white;
-  margin-right: 30px;
-  border-color: olivedrab;
+  font-size: 16px;
 }
 
-.signin-button {
-  background-color: blue;
-  color: white;
+.login button {
+  width: 100%;
+  margin-bottom: 21px;
+  border: none;
+  outline: none;
+  height: 35px;
+  color: #000;
+  background: #fff;
+  border-radius: 20px;
+  transition: 0.2s;
 }
 
-.buttons {
-  /* padding: 5%; */
-  display: flex;
-  margin-right: 5%;
+.login button:hover {
+  cursor: pointer;
+  background: #ff4d4d;
+  transition: 0.2s;
+}
+
+.login button:disabled {
+  cursor: wait;
+  background-color: gray;
+  color: rgb(163, 163, 163);
 }
