@@ -10,15 +10,14 @@ function Form({ showName }) {
     name,
     setName,
     messageResponse,
+    eraseDataFromState
   } = useContext(AppContext);
 
   const verifyIfUserIsDeletedOrDisconnected = () => {
     // A recuperação dessa chave é no caso do usuário ter sido deslogado
     const token = localStorage.getItem('token');
     if (messageResponse === 'User has been deleted.' || !token) {
-      setEmail('');
-      setPassword('');
-      setName('');
+      eraseDataFromState();
       // Esse removeItem é no caso do usuário ter sido deletado
       localStorage.removeItem('token');
     }
