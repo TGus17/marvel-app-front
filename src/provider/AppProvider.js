@@ -16,6 +16,11 @@ function AppProvider({ children }) {
   const [inputSearch, setInputSearch] = useState('');
   const [getResponse, setGetResponse] = useState(false);
 
+  const eraseDataFromState = () => {
+    setEmail('');
+    setPassword('');
+    setName('');
+  }
   const contextValue = {
     name,
     setName,
@@ -43,6 +48,7 @@ function AppProvider({ children }) {
     setInputSearch,
     getResponse,
     setGetResponse,
+    eraseDataFromState,
   }
   return (
     <AppContext.Provider value={ contextValue }>

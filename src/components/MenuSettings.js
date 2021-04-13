@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import AppContext from '../context/AppContext';
 import { useHistory } from 'react-router-dom';
-import {MenuButton} from './';
+import { MenuButton } from './';
 
 function MenuSettings() {
   const {
