@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { requestProcess } from '../service';
 import AppContext from '../context/AppContext';
+import '../pages/styles/Login.css';
 
 function ButtonComponent({ label, endpoint, method, body, redirect }) {
   const history = useHistory();
@@ -36,7 +37,6 @@ function ButtonComponent({ label, endpoint, method, body, redirect }) {
   return (
     <button
       type="button"
-      className="btn signin-button mb-0"
       onClick={ clickButton }
       disabled={ isDisable }
     >
