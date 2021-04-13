@@ -26,7 +26,7 @@ function Profile() {
   }, []);
 
   return (
-    <div>
+    <div className="profile-container">
       <MenuSettings />
       <div className="login profile">
         <img
