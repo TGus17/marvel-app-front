@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { verifyEmailAndPassword } from '../util/exportedFunctions';
 import { Form, ButtonComponent, MenuButton } from '../components';
 import AppContext from '../context/AppContext';
-import spiderMan from '../images/spider-man.svg';
+import spiderMan from '../images/icons/spiderMan.svg';
 import './styles/Login.css';
 
 function Login() {

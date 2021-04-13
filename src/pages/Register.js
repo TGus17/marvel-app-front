@@ -3,7 +3,7 @@ import { ButtonComponent, Form, MenuButton } from '../components';
 import AppContext from '../context/AppContext';
 import { verifyEmailAndPassword } from '../util/exportedFunctions';
 import { useHistory } from 'react-router-dom';
-import ironMan from '../images/ironMan.png';
+import ironMan from '../images/icons/ironMan.svg';
 import './styles/Login.css';
 import './styles/Register.css';
 

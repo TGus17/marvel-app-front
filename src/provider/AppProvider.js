@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
 
 function AppProvider({ children }) {
@@ -15,12 +16,19 @@ function AppProvider({ children }) {
   const [copyrightText, setCopyrightText] = useState('');
   const [inputSearch, setInputSearch] = useState('');
   const [getResponse, setGetResponse] = useState(false);
+  const history = useHistory();
 
   const eraseDataFromState = () => {
     setEmail('');
     setPassword('');
     setName('');
-  }
+  };
+
+  const clearStorage = () => {
+    localStorage.clear();
+    history.push('/');
+  };
+
   const contextValue = {
     name,
     setName,
@@ -49,6 +57,7 @@ function AppProvider({ children }) {
     getResponse,
     setGetResponse,
     eraseDataFromState,
+    clearStorage,
   }
   return (
     <AppContext.Provider value={ contextValue }>
