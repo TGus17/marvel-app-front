@@ -48,9 +48,11 @@ function Home() {
 
   return (
     <div>
-      <MenuSettings />
-      <div>
-        {showSearchBar && <SearchBar searchCharacter={ searchCharacter }/>}
+      <div className="top-menu">
+        <MenuSettings />
+        <div>
+          {showSearchBar && <SearchBar searchCharacter={ searchCharacter }/>}
+        </div>
       </div>
       <div>
         <h2>{title}</h2>

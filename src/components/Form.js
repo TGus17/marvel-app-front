@@ -12,8 +12,8 @@ function Form({ showName }) {
     messageResponse,
     eraseDataFromState
   } = useContext(AppContext);
-
   const [autoFocus, setAutoFocus] = useState(true);
+  
   const verifyIfUserIsDeletedOrDisconnected = () => {
     // A recuperação dessa chave é no caso do usuário ter sido deslogado
     const token = localStorage.getItem('token');
