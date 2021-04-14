@@ -4,6 +4,9 @@ body {
   background-image: url('https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
   background-size: cover;
   font-family: 'Roboto Condensed', sans-serif;
+  height: 100vh;
+  display: grid;
+  place-items: center center;
 }
 
 .login {

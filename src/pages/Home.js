@@ -60,11 +60,13 @@ function Home() {
           ?
           <LoadingSpinner />
           :
-          data.map((data) => (
-            <Card
-              data={data}
-            />
-          ))
+          <div className="card-container">
+            {data.map((data) => (
+              <Card
+                data={data}
+              />
+            ))}
+          </div>
         }
       </div>
     </div>
