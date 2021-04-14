@@ -29,3 +29,9 @@ npm start //para iniciar a aplicação
 + Você será redirecionado para a tela de login. Entre com seus dados e clique em ```sign in```.
 + Uma vez logado, na tela de profile, será possível editar suas informações, deletar o usuário logado e deslogar da aplicação. Para voltar a usar será necessário fazer novo login.
 + Uma vez logado será possível procurar por comics e characters disponíveis no site da Marvel, favoritá-los e consultar os favoritos.
+
+## Tecnologias usadas
++ ReactJS
+
+## Desenvolvedor
++ <a href="https://github.com/TGus17">Gustavo Oliva</a>
