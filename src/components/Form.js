@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import AppContext from '../context/AppContext';
 import '../pages/styles/Login.css';
 
@@ -13,6 +13,7 @@ function Form({ showName }) {
     eraseDataFromState
   } = useContext(AppContext);
 
+  const [autoFocus, setAutoFocus] = useState(true);
   const verifyIfUserIsDeletedOrDisconnected = () => {
     // A recuperação dessa chave é no caso do usuário ter sido deslogado
     const token = localStorage.getItem('token');
@@ -23,8 +24,15 @@ function Form({ showName }) {
     }
   }
 
+  const checkAutoFocus = () => {
+    if (showName === true) return setAutoFocus(true);
+    setAutoFocus(false);
+    console.log(autoFocus);
+  }
+
   useEffect(() => {
     verifyIfUserIsDeletedOrDisconnected();
+    checkAutoFocus();
   }, []);
 
   return (
@@ -41,6 +49,7 @@ function Form({ showName }) {
           placeholder="name"
           onChange={ (e) => setName(e.target.value) }
           value={ name }
+          autoFocus={autoFocus}
         />
       </div>}
       <div className="mb-3">
@@ -55,6 +64,7 @@ function Form({ showName }) {
           placeholder="name@example.com"
           onChange={ (e) => setEmail(e.target.value) }
           value={ email }
+          autoFocus={!autoFocus}
         />
       </div>
       <div className="mb-3">

@@ -9,12 +9,11 @@ function Card ({ data }) {
 
   return (
     <Link
+      className="link-card"
       to={ { pathname:`/details/${data.id}`, state: { uri, data } } }
     >
-      <div
-        className="card-container"
-      >
-        <img src={image} alt={ data.name ? data.name : data.title } className="card-container"/>
+      <div className="card-container">
+        <img className="card-image" src={image} alt={ data.name ? data.name : data.title } />
         <p className="title">{ data.name ? data.name : data.title }</p>
       </div>
     </Link>
