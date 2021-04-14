@@ -23,10 +23,9 @@ npm install //para instalar as dependências
 npm start //para iniciar a aplicação
 ```
 ## Instruçẽs de uso
-<p>Uma página do seu navegador irá abrir no endereço ```http://localhost:3000/``` .</p>
-</br>
-<p>Aperte em 'Register' para registrar um novo usuário.</p>
-<p>Insira nome, email e senha e clique em sign up.</p>
-<p>Você será redirecionado para a tela de login. Entre com os dados e clique em sign in.</p>
-<p>Uma vez logado, será possível editar suas informações na tela de profile, deletar usuário logado e deslogar da aplicação. Para voltar a usar será necessário fazer novo login.</p>
-<p>Uma vez logado será possível procurar por comics e characters disponíveis no site da Marvel, favoritá-los e consultar os favoritos.</p>
++ Uma página do seu navegador irá abrir no endereço ```http://localhost:3000/``` .
++ Aperte em ```Register``` para registrar um novo usuário.
++ Insira nome, email e senha nos respectivos campos e clique em ```sign up```.
++ Você será redirecionado para a tela de login. Entre com seus dados e clique em ```sign in```.
++ Uma vez logado, na tela de profile, será possível editar suas informações, deletar o usuário logado e deslogar da aplicação. Para voltar a usar será necessário fazer novo login.
++ Uma vez logado será possível procurar por comics e characters disponíveis no site da Marvel, favoritá-los e consultar os favoritos.
