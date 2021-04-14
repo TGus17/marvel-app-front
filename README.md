@@ -3,8 +3,8 @@
 <p align="justify">Esse repositório faz parte de uma aplicação web MarvelApp. Aqui você irá encontrar o frontend da aplicação. O backend encontra-se <a href="https://github.com/TGus17/marvel-app-back">aqui</a>. A aplicação consiste em um mecanismo de busca por characters e comics da marvel. Esse projeto foi desenvolvido como um requisito para um processo seletivo. Possui caráter de estudo e se encontra em desenvolvimento.</p>
 
 ## Requisitos
-<p>O funcionamento correto desse projeto só será possível se o <a herf="https://github.com/TGus17/marvel-app-back">backend</a> desta aplicação estiver rodando em paralelo a este repositório</p>
-<p>Para rodar o backend desse projeto você precisará ter o MySQL Server instalado na sua máquina.</p>
++ O funcionamento correto desse projeto só será possível se o <a herf="https://github.com/TGus17/marvel-app-back">backend</a> desta aplicação estiver rodando em paralelo a este repositório
++ Para rodar o backend desse projeto você precisará ter o MySQL Server instalado na sua máquina.
 
 ## Instruções de instalação
 
