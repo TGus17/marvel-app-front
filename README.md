@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+<h1 align="center">Bem vindos ao repositório frontend de uma aplicação da Marvel</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="justify">Esse repositório faz parte de uma aplicação web MarvelApp. Aqui você irá encontrar o frontend da aplicação. O backend encontra-se <a href="https://github.com/TGus17/marvel-app-back">aqui</a>. A aplicação consiste em um mecanismo de busca por characters e comics da marvel. Esse projeto foi desenvolvido como um requisito para um processo seletivo. Possui caráter de estudo e se encontra em desenvolvimento.</p>
 
-## Available Scripts
+##Requisitos
+<p>Para rodar esse projeto você precisará ter o MySQL Server instalado na sua máquina.</p>
 
-In the project directory, you can run:
+##Instruções de instalação
 
-### `npm start`
++Clone esse repositório
+```javascript
+git clone https://github.com/TGus17/marvel-app-front.git
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
++Entre na pasta raíz do projeto
+```javascript
+cd marvel-app-front
+```
++Rode os seguintes comandos no terminal
+```javascript
+npm install //para instalar as dependências
+npm start //para iniciar a aplicação
+```
+##Instruçẽs de uso
+<p>Uma página do seu navegador irá abrir no endereço ```http://localhost:3000/``` .</p>
+</br>
+<p>Aperte em 'Register' para registrar um novo usuário.</p>
+<p>Insira nome, email e senha e clique em sign up.</p>
+<p>Você será redirecionado para a tela de login. Entre com os dados e clique em sign in.</p>
+<p>Uma vez logado, será possível editar suas informações na tela de profile, deletar usuário logado e deslogar da aplicação. Para voltar a usar será necessário fazer novo login.</p>
+<p>Uma vez logado será possível procurar por comics e characters disponíveis no site da Marvel, favoritá-los e consultar os favoritos.</p>
