@@ -1,0 +1,37 @@
+.details button {
+  /* width: 100%; */
+  margin-bottom: 21px;
+  margin-left: 50px;
+  border: none;
+  outline: none;
+  height: 35px;
+  color: #000;
+  background: rgb(255, 255, 255);
+  border-radius: 20px;
+  transition: 0.2s;
+}
+
+.details-page {
+  display: flex;
+  background-color: rgba(0, 0, 5, 0.8);
+  border-radius: 20px;
+  width: 80%;
+  justify-content: center;
+  /* align-content: center; */
+}
+
+.details-text {
+  margin-left: 20px;
+}
+
+.card-details {
+  /* width: 30%; */
+  display: flex;
+  flex-direction: column;
+}
+
+.cards {
+  display: flex;
+  /* width: 60%; */
+  flex-wrap: wrap;
+}

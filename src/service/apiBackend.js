@@ -1,4 +1,7 @@
+// const baseUrl = 'https://tgus17-marvel-app-back.herokuapp.com';
 const baseUrl = 'http://localhost:3001';
+
+
 
 const options = (Authorization, method, body = null) => ({
   method,

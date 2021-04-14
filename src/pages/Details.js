@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { fetchMarvelData } from '../service';
-import { DetailCard, LoadingSpinner } from '../components';
+import { DetailCard, LoadingSpinner, MenuSettings } from '../components';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import whiteHeart from '../images/whiteHeartIcon.svg';
 import AppContext from '../context/AppContext';
+import './styles/Details.css'
 
 function Details(props) {
   const { copyrightText } = useContext(AppContext);
@@ -17,6 +18,7 @@ function Details(props) {
     const { data: { results: [fetchedResult] } } = await fetchMarvelData(resourceURI);
     setMarvelData(fetchedResult);
     setDownloaded(true);
+    console.log('marvelData', marvelData);
   };
 
   const checkFavorites = () => {
@@ -58,14 +60,11 @@ function Details(props) {
 
   return (
     <div>
-      <div>
+      <MenuSettings />
+      <div className="details">
         <button onClick={ markAndUnmarkAsFavorite }>
           <img src={ isFavorite ? blackHeartIcon : whiteHeart } alt='favorite' />
         </button>
-      </div>
-      <div>
-        <h1>{ data.name ? marvelData.name : marvelData.title }</h1>
-        <p>{ marvelData.description }</p>
       </div>
       <div>
         {!downloaded
@@ -74,26 +73,39 @@ function Details(props) {
           :
           (
           <div>
-            <div>
-              <img src={`${marvelData.thumbnail.path}.${marvelData.thumbnail.extension}`} alt={marvelData.name}/>
-              <p className="copyright">{copyrightText}</p>
+            <div className="details-page">
+              <div>
+                <img src={`${marvelData.thumbnail.path}.${marvelData.thumbnail.extension}`} alt={marvelData.name}/>
+              </div>
+              <div className="details-text">
+                <p className="copyright">{copyrightText}</p>
+                <h1>{ data.name ? marvelData.name : marvelData.title }</h1>
+                <p>{ marvelData.description }</p>
+                <p>Events: {marvelData.events.available}</p>
+                <p>Stories: {marvelData.stories.available}</p>
+                <p></p>
+              </div>
             </div>
-            <div>
+            <div className="card-details">
               <h3>{data.name ? 'Related Comics' : 'Related Characters'}</h3>
               {
                 data.name
                   ?
-                  data.comics.items.map((item) => (
+                  <div className="cards">
+                    {data.comics.items.map((item) => (
                     <DetailCard
                       item={item}
                     />
-                  ))
+                  ))}
+                  </div>
                   :
-                  data.characters.items.map((item) => (
+                  <div className="cards">
+                    {data.characters.items.map((item) => (
                     <DetailCard
                       item={item}
                     />
-                  ))
+                  ))}
+                  </div>
               }
             </div>
           </div>

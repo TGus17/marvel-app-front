@@ -24,6 +24,7 @@ function Login() {
 
   useEffect(() => {
     setIsDisable(!verifyEmailAndPassword(email, password));
+    console.log(comebackData);
     setComebackData(false);
     verifyIfNewUser();
   }, [email, password]);
